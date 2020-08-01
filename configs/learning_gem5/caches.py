@@ -8,11 +8,25 @@ class L1Cache(Cache):
     mshrs = 4 
     tgts_per_mshr = 20
 
+    def __init__(self, options=None):
+        super(L1Cache, self).__init__()
+
 class L1ICache(L1Cache):
+    def __init__(self, options=None):
+        super(L1ICache, self).__init__(options)
+        if(not options or not options.l1i_size):
+            return 
+        self.size = options.l1i_size
+
     size = '16kB'
     
 class L1DCache(L1Cache):
     size = '16kB'
+    def __init__(self, options=None):
+        super(L1DCache, self).__init__(options)
+        if(not options or not options.l1d_size):
+            return 
+        self.size = options.l1d_size
 
 class L2Cache(Cache):
     size = '256kB'
@@ -22,3 +36,9 @@ class L2Cache(Cache):
     response_latency = 20
     mshrs = 20
     tgts_per_mshr = 12
+
+    def __init__(self, options=None):
+        super(L2Cache, self).__init__()
+        if(not options or not options.l2_size):
+            return 
+        self.size = options.l2_size
