@@ -1,0 +1,5 @@
+Import('*')
+
+DebugFlag('SimpleObj')
+SimObject('SimpleObj.py')
+Source('SimpleObj.cc')
