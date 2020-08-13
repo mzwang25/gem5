@@ -39,7 +39,7 @@ do
     cd run*
 
 
-    cp * $SPEC2017BIN
+    cp *mytest-m64 $SPEC2017BIN
 
     #create a script to run that executable
     specinvoke -n | grep "\.\./run_*" | sed 's,^[^/]*/,,' | sed 's,^[^/]*/,,' | while read line; do echo "./$line"; done > $SCRIPTDIR/$dir.sh

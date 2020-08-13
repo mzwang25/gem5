@@ -1,6 +1,0 @@
-checkpoint set
-root@gem5-host:~# serial8250: too much work for irq4
-m5 resetstats
-root@gem5-host:~# 
-root@gem5-host:~# serial8250: too much work for irq4
-sh 519.lbm_r.sh

@@ -2,12 +2,12 @@ gem5 Simulator System.  http://gem5.org
 gem5 is copyrighted software; use the --copyright option for details.
 
 gem5 version 20.0.0.2
-gem5 compiled Jul  9 2020 15:45:57
-gem5 started Jul 26 2020 11:45:26
-gem5 executing on nanocad-server-testbed, pid 154708
-command line: x86o fs.py -h
+gem5 compiled Jul 31 2020 07:56:31
+gem5 started Aug  3 2020 07:15:33
+gem5 executing on nanocad-server-testbed, pid 63007
+command line: x86o se.py -h
 
-Usage: fs.py [options]
+Usage: se.py [options]
 
 Options:
   -h, --help            show this help message and exit
@@ -48,6 +48,7 @@ Options:
   --l2_assoc=L2_ASSOC   
   --l3_assoc=L3_ASSOC   
   --cacheline_size=CACHELINE_SIZE
+  --l3cache             
   --ruby                
   -m TICKS, --abs-max-tick=TICKS
                         Run to absolute simulated tick specified including
@@ -202,32 +203,34 @@ Options:
   --spec-input=SPEC_INPUT
                         Input set size for SPEC CPU2000 benchmarks.
   --arm-iset=ARM_ISET   ARM instruction set.
-  --timesync            Prevent simulated time from getting ahead of real time
-  --kernel=KERNEL       
-  --os-type=OS_TYPE     Specifies type of OS to boot
-  --script=SCRIPT       
-  --frame-capture       Stores changed frame buffers from the VNC server to
-                        compressed files in the gem5 output directory
-  --dual                Simulate two systems attached with an ethernet link
-  -b BENCHMARK, --benchmark=BENCHMARK
-                        Specify the benchmark to run. Available benchmarks:
-                        ArmAndroid-GB, ArmAndroid-ICS, IScsiInitiator,
-                        IScsiTarget, MutexTest, NetperfMaerts, NetperfStream,
-                        NetperfStreamNT, NetperfStreamUdp, NetperfUdpLocal,
-                        Nfs, NfsTcp, Nhfsstone, Ping, PovrayAutumn,
-                        PovrayBench, SurgeSpecweb, SurgeStandard, ValAccDelay,
-                        ValAccDelay2, ValCtxLat, ValMemLat, ValMemLat2MB,
-                        ValMemLat8MB, ValStream, ValStreamCopy,
-                        ValStreamScale, ValSysLat, ValTlbLat, Validation,
-                        bbench-gb, bbench-ics
-  --etherdump=ETHERDUMP
-                        Specify the filename to dump a pcap capture of
-                        theethernet traffic
-  --disk-image=DISK_IMAGE
-                        Path to the disk images to use.
-  --root-device=ROOT_DEVICE
-                        OS device name for root partition
-  --command-line=COMMAND_LINE
-                        Template for the kernel command line.
-  --command-line-file=COMMAND_LINE_FILE
-                        File with a template for the kernel command line
+  -c CMD, --cmd=CMD     The binary to run in syscall emulation mode.
+  -o OPTIONS, --options=OPTIONS
+                        The options to pass to the binary, use " "
+                        around the entire string
+  -e ENV, --env=ENV     Initialize workload environment from text file.
+  -i INPUT, --input=INPUT
+                        Read stdin from a file.
+  --output=OUTPUT       Redirect stdout to a file.
+  --errout=ERROUT       Redirect stderr to a file.
+  --chroot=CHROOT       The chroot option allows a user to alter the search
+                        path for processes running in SE mode. Normally, the
+                        search path would begin at the root of the filesystem
+                        (i.e. /). With chroot, a user can force the process to
+                        begin looking atsome other location (i.e.
+                        /home/user/rand_dir).The intended use is to trick
+                        sophisticated software which queries the __HOST__
+                        filesystem for information or functionality. Instead
+                        of finding files on the __HOST__ filesystem, the
+                        process will find the user's replacment files.
+  --interp-dir=INTERP_DIR
+                        The interp-dir option is used for setting the
+                        interpreter's path. This will allow to load the guest
+                        dynamic linker/loader itself from the elf binary. The
+                        option points to the parent folder of the guest /lib
+                        in the host fs
+  --redirects=REDIRECTS
+                        A collection of one or more redirect paths to be used
+                        in syscall emulation.Usage: gem5.opt [...] --redirects
+                        /dir1=/path/to/host/dir1 --redirects
+                        /dir2=/path/to/host/dir2
+  --wait-gdb=WAIT_GDB   Wait for remote GDB to connect.

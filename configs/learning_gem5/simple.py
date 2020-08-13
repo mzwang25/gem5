@@ -15,6 +15,9 @@ parser.add_option('--l2_size')
 
 system = System()
 
+system.comm_monitor = CommMonitor()
+system.comm_monitor.trace = MemTraceProbe(trace_file="my_trace.trc")
+
 # clock domain
 system.clk_domain = SrcClockDomain()
 system.clk_domain.clock = '10GHz'
@@ -37,7 +40,9 @@ system.cpu.icache_port = system.cpu.icache.cpu_side
 system.cpu.dcache_port = system.cpu.dcache.cpu_side
 
 system.cpu.icache.mem_side = system.l2bus.slave
-system.cpu.dcache.mem_side = system.l2bus.slave
+
+system.cpu.dcache.mem_side = system.comm_monitor.slave
+system.l2bus.slave = system.comm_monitor.master
 
 system.l2cache = L2Cache(options)
 system.l2cache.cpu_side = system.l2bus.master
@@ -57,7 +62,7 @@ system.mem_ctrl.port = system.membus.master
 
 # Process
 process = Process()
-process.cmd = ['/home/nanoproj/michael/gem5/configs/learning_gem5/sieve_of_eratosthenes', '1000000']
+process.cmd = ['/home/nanoproj/michael/gem5/configs/learning_gem5/sieve_of_eratosthenes', '100']
 system.cpu.workload = process 
 system.cpu.createThreads()
 

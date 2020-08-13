@@ -95,6 +95,7 @@ def config_cache(options, system):
         fatal("When elastic trace is enabled, do not configure L2 caches.")
 
     if options.l2cache and options.l3cache:
+        print("l3 CACHE IS USED!!!!!!!")
         system.l2 = l2_cache_class(clk_domain=system.cpu_clk_domain,
                                    size=options.l2_size,
                                    assoc=options.l2_assoc)

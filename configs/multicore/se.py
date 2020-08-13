@@ -53,9 +53,7 @@ from m5.objects import *
 from m5.params import NULL
 from m5.util import addToPath, fatal, warn
 
-import spec17_benchmarks
-
-addToPath('../gem5/configs')
+addToPath('../')
 
 from ruby import Ruby
 
@@ -124,12 +122,6 @@ parser = optparse.OptionParser()
 Options.addCommonOptions(parser)
 Options.addSEOptions(parser)
 
-# Benchmark options here
-parser.add_option("-b", "--benchmark", type="string", default="", help="The SPEC benchmark to be loaded.")
-parser.add_option("--benchmark_stdout", type="string", default="", help="Absolute path for benchmark's stdout")
-parser.add_option("--benchmark_stderr", type="string", default="", help="Absolute path for benchmark's stderr")
-
-
 if '--ruby' in sys.argv:
     Ruby.define_options(parser)
 
@@ -142,152 +134,30 @@ if args:
 multiprocesses = []
 numThreads = 1
 
-# Parsing Benchmark to use
-if options.benchmark:
-    print("Selected SPEC_CPU2017 Benchmark")
-    if(options.benchmark == '500.perlbench_r'):
-        print("--> 500.perlbench_r")
-        process = spec17_benchmarks.perlbench_r
-    elif(options.benchmark == '502.gcc_r'):
-        print("--> 502.gcc_r")
-        process = spec17_benchmarks.gcc_r
-    elif(options.benchmark == '503.bwaves_r'):
-        print("--> 503.bwaves_r")
-        process = spec17_benchmarks.bwaves_r
-    elif(options.benchmark == '505.mcf_r'):
-        print("--> 505.mcf_r")
-        process = spec17_benchmarks.mcf_r
-    elif(options.benchmark == '507.cactuBSSN_r'):
-        print("--> 507.cactuBSSN_r")
-        process = spec17_benchmarks.cactuBSSN_r
-    elif(options.benchmark == '508.namd_r'):
-        print("--> 508.namd_r")
-        process = spec17_benchmarks.namd_r
-    elif(options.benchmark == '510.parest_r'):
-        print("--> 510.parest_r")
-        process = spec17_benchmarks.parest_r
-    elif(options.benchmark == '511.povray_r'):
-        print("--> 511.povray_r")
-        process = spec17_benchmarks.povray_r
-    elif(options.benchmark == '519.lbm_r'):
-        print("--> 519.lbm_r")
-        process = spec17_benchmarks.lbm_r
-    elif(options.benchmark == '520.omnetpp_r'):
-        print("--> 520.omnetpp_r")
-        process = spec17_benchmarks.omnetpp_r
-    elif(options.benchmark == '521.wrf_r'):
-        print("--> 521.wrf_r")
-        process = spec17_benchmarks.wrf_r
-    elif(options.benchmark == '523.xalancbmk_r'):
-        print("--> 523.xalancbmk_r")
-        process = spec17_benchmarks.xalancbmk_r
-    elif(options.benchmark == '525.x264_r'):
-        print("--> 525.x264_r")
-        process = spec17_benchmarks.x264_r
-    elif(options.benchmark == '526.blender_r'):
-        print("--> 526.blender_r")
-        process = spec17_benchmarks.blender_r
-    elif(options.benchmark == '527.cam4_r'):
-        print("--> 527.cam4_r")
-        process = spec17_benchmarks.cam4_r
-    elif(options.benchmark == '531.deepsjeng_r'):
-        print("--> 531.deepsjeng_r")
-        process = spec17_benchmarks.deepsjeng_r
-    elif(options.benchmark == '538.imagick_r'):
-        print("--> 538.imagick_r")
-        process = spec17_benchmarks.imagick_r
-    elif(options.benchmark == '541.leela_r'):
-        print("--> 541.leela_r")
-        process = spec17_benchmarks.leela_r
-    elif(options.benchmark == '544.nab_r'):
-        print("--> 544.nab_r")
-        process = spec17_benchmarks.nab_r
-    elif(options.benchmark == '548.exchange2_r'):
-        print("--> 548.exchange2_r")
-        process = spec17_benchmarks.exchange2_r
-    elif(options.benchmark == '554.roms_r'):
-        print("--> 554.roms_r")
-        process = spec17_benchmarks.roms_r
-    elif(options.benchmark == '557.xz_r'):
-        print("--> 557.xz_r")
-        process = spec17_benchmarks.xz_r
-    elif(options.benchmark == '600.perlbench_s'):
-        print("--> 600.perlbench_s")
-        process = spec17_benchmarks.perlbench_s
-    elif(options.benchmark == '602.gcc_s'):
-        print("--> 602.gcc_s")
-        process = spec17_benchmarks.gcc_s
-    elif(options.benchmark == '603.bwaves_s'):
-        print("--> 603.bwaves_s")
-        process = spec17_benchmarks.bwaves_s
-    elif(options.benchmark == '605.mcf_s'):
-        print("--> 605.mcf_s")
-        process = spec17_benchmarks.mcf_s
-    elif(options.benchmark == '607.cactuBSSN_s'):
-        print("--> 607.cactuBSSN_s")
-        process = spec17_benchmarks.cactuBSSN_s
-    elif(options.benchmark == '619.lbm_s'):
-        print("--> 619.lbm_s")
-        process = spec17_benchmarks.lbm_s
-    elif(options.benchmark == '620.omnetpp_s'):
-        print("--> 620.omnetpp_s")
-        process = spec17_benchmarks.omnetpp_s
-    elif(options.benchmark == '621.wrf_s'):
-        print("--> 621.wrf_s")
-        process = spec17_benchmarks.wrf_s
-    elif(options.benchmark == '623.xalancbmk_s'):
-        print("--> 623.xalancbmk_s")
-        process = spec17_benchmarks.xalancbmk_s
-    elif(options.benchmark == '625.x264_s'):
-        print("--> 625.x264_s")
-        process = spec17_benchmarks.x264_s
-    elif(options.benchmark == '627.cam4_s'):
-        print("--> 627.cam4_s")
-        process = spec17_benchmarks.cam4_s
-    elif(options.benchmark == '628.pop2_s'):
-        print("--> 628.pop2_s")
-        process = spec17_benchmarks.pop2_s
-    elif(options.benchmark == '631.deepsjeng_s'):
-        print("--> 631.deepsjeng_s")
-        process = spec17_benchmarks.deepsjeng_s
-    elif(options.benchmark == '638.imagick_s'):
-        print("--> 638.imagick_s")
-        process = spec17_benchmarks.imagick_s
-    elif(options.benchmark == '641.leela_s'):
-        print("--> 641.leela_s")
-        process = spec17_benchmarks.leela_s
-    elif(options.benchmark == '644.nab_s'):
-        print("--> 644.nab_s")
-        process = spec17_benchmarks.nab_s
-    elif(options.benchmark == '648.exchange2_s'):
-        print("--> 648.exchange2_s")
-        process = spec17_benchmarks.exchange2_s
-    elif(options.benchmark == '649.fotonik3d_s'):
-        print("--> 649.fotonik3d_s")
-        process = spec17_benchmarks.fotonik3d_s
-    elif(options.benchmark == '654.roms_s'):
-        print("--> 654.roms_s")
-        process = spec17_benchmarks.roms_s
-    elif(options.benchmark == '657.xz_s'):
-        print("--> 657.xz_s")
-        process = spec17_benchmarks.xz_s
-    elif(options.benchmark == '996.specrand_fs'):
-        print("--> 996.specrand_fs")
-        process = spec17_benchmarks.specrand_fs
-    elif(options.benchmark == '997.specrand_fr'):
-        print("--> 997.specrand_fr")
-        process = spec17_benchmarks.specrand_fr
-    elif(options.benchmark == '998.specrand_is'):
-        print("--> 998.specrand_is")
-        process = spec17_benchmarks.specrand_is
-    elif(options.benchmark == '999.specrand_ir'):
-        print("--> 999.specrand_ir")
-        process = spec17_benchmarks.specrand_ir
-    else:
-        print("--> Invalid Benchmark Name Exiting.")
+if options.bench:
+    apps = options.bench.split("-")
+    if len(apps) != options.num_cpus:
+        print("number of benchmarks not equal to set num_cpus!")
         sys.exit(1)
+
+    for app in apps:
+        try:
+            if buildEnv['TARGET_ISA'] == 'arm':
+                exec("workload = %s('arm_%s', 'linux', '%s')" % (
+                        app, options.arm_iset, options.spec_input))
+            else:
+                exec("workload = %s(buildEnv['TARGET_ISA', 'linux', '%s')" % (
+                        app, options.spec_input))
+            multiprocesses.append(workload.makeProcess())
+        except:
+            print("Unable to find workload for %s: %s" %
+                  (buildEnv['TARGET_ISA'], app),
+                  file=sys.stderr)
+            sys.exit(1)
+elif options.cmd:
+    multiprocesses, numThreads = get_processes(options)
 else:
-    print("Need --benchmark switch to specify SPEC CPU2017 workload")
+    print("No workload specified. Exiting!\n", file=sys.stderr)
     sys.exit(1)
 
 
@@ -349,11 +219,30 @@ if options.simpoint_profile:
     if np > 1:
         fatal("SimPoint generation not supported with more than one CPUs")
 
-# Assign Workload here
 for i in range(np):
-    system.cpu[i].workload = process
+    if options.smt:
+        system.cpu[i].workload = multiprocesses
+    elif len(multiprocesses) == 1:
+        system.cpu[i].workload = multiprocesses[0]
+    else:
+        system.cpu[i].workload = multiprocesses[i]
+
+    if options.simpoint_profile:
+        system.cpu[i].addSimPointProbe(options.simpoint_interval)
+
+    if options.checker:
+        system.cpu[i].addCheckerCpu()
+
+    if options.bp_type:
+        bpClass = ObjectList.bp_list.get(options.bp_type)
+        system.cpu[i].branchPred = bpClass()
+
+    if options.indirect_bp_type:
+        indirectBPClass = \
+            ObjectList.indirect_bp_list.get(options.indirect_bp_type)
+        system.cpu[i].branchPred.indirectBranchPred = indirectBPClass()
+
     system.cpu[i].createThreads()
-    print("process: " + str(process.cmd) + "\n")
 
 if options.ruby:
     Ruby.create_system(options, False, system)
@@ -375,7 +264,7 @@ if options.ruby:
         if buildEnv['TARGET_ISA'] == 'x86':
             system.cpu[i].interrupts[0].pio = ruby_port.master
             system.cpu[i].interrupts[0].int_master = ruby_port.slave
-            system.cpu[i].interrupts[0].int_slave = ruby_p2rt.master
+            system.cpu[i].interrupts[0].int_slave = ruby_port.master
             system.cpu[i].itb.walker.port = ruby_port.slave
             system.cpu[i].dtb.walker.port = ruby_port.slave
 else:

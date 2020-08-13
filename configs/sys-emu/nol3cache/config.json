@@ -41,7 +41,7 @@
             "slave": {
                 "peer": [
                     "system.system_port", 
-                    "system.l3.mem_side", 
+                    "system.l2.mem_side", 
                     "system.cpu.interrupts.int_master"
                 ], 
                 "is_source": "False", 
@@ -79,7 +79,7 @@
                 "app_path": "/proc", 
                 "name": "redirect_paths0", 
                 "host_paths": [
-                    "/home/nanoproj/michael/gem5/configs/sys-emu/l3cache/fs/proc"
+                    "/home/nanoproj/michael/gem5/configs/sys-emu/nol3cache/fs/proc"
                 ], 
                 "eventq_index": 0, 
                 "cxx_class": "RedirectPath", 
@@ -90,7 +90,7 @@
                 "app_path": "/sys", 
                 "name": "redirect_paths1", 
                 "host_paths": [
-                    "/home/nanoproj/michael/gem5/configs/sys-emu/l3cache/fs/sys"
+                    "/home/nanoproj/michael/gem5/configs/sys-emu/nol3cache/fs/sys"
                 ], 
                 "eventq_index": 0, 
                 "cxx_class": "RedirectPath", 
@@ -101,7 +101,7 @@
                 "app_path": "/tmp", 
                 "name": "redirect_paths2", 
                 "host_paths": [
-                    "/home/nanoproj/michael/gem5/configs/sys-emu/l3cache/fs/tmp"
+                    "/home/nanoproj/michael/gem5/configs/sys-emu/nol3cache/fs/tmp"
                 ], 
                 "eventq_index": 0, 
                 "cxx_class": "RedirectPath", 
@@ -114,63 +114,6 @@
         "thermal_components": [], 
         "thermal_model": null, 
         "cxx_class": "System", 
-        "tol3bus": {
-            "point_of_coherency": false, 
-            "system": "system", 
-            "response_latency": 1, 
-            "cxx_class": "CoherentXBar", 
-            "max_routing_table_size": 512, 
-            "forward_latency": 0, 
-            "clk_domain": "system.cpu_clk_domain", 
-            "max_outstanding_snoops": 512, 
-            "point_of_unification": false, 
-            "width": 32, 
-            "master": {
-                "peer": [
-                    "system.l3.cpu_side"
-                ], 
-                "is_source": "True", 
-                "role": "GEM5 REQUESTER"
-            }, 
-            "power_state": {
-                "default_state": "UNDEFINED", 
-                "name": "power_state", 
-                "possible_states": [], 
-                "clk_gate_min": 1000, 
-                "clk_gate_bins": 20, 
-                "eventq_index": 0, 
-                "clk_gate_max": 1000000000000, 
-                "cxx_class": "PowerState", 
-                "path": "system.tol3bus.power_state", 
-                "type": "PowerState", 
-                "leaders": []
-            }, 
-            "eventq_index": 0, 
-            "type": "CoherentXBar", 
-            "frontend_latency": 1, 
-            "slave": {
-                "peer": [
-                    "system.l2.mem_side"
-                ], 
-                "is_source": "False", 
-                "role": "GEM5 RESPONDER"
-            }, 
-            "snoop_filter": {
-                "name": "snoop_filter", 
-                "system": "system", 
-                "max_capacity": 8388608, 
-                "eventq_index": 0, 
-                "cxx_class": "SnoopFilter", 
-                "path": "system.tol3bus.snoop_filter", 
-                "type": "SnoopFilter", 
-                "lookup_latency": 0
-            }, 
-            "power_model": [], 
-            "path": "system.tol3bus", 
-            "snoop_response_latency": 1, 
-            "name": "tol3bus", 
-            "use_default_range": false
-        }, 
         "work_begin_exit_count": 0, 
         "work_end_ckpt_count": 0, 
         "memories": [
@@ -1102,7 +1045,7 @@
                 "leaders": []
             }, 
             "mem_side": {
-                "peer": "system.tol3bus.slave[0]", 
+                "peer": "system.membus.slave[1]", 
                 "is_source": "True", 
                 "role": "GEM5 REQUESTER"
             }, 
@@ -1166,109 +1109,6 @@
             "type": "Cache", 
             "sequential_access": false, 
             "assoc": 8
-        }, 
-        "l3": {
-            "replacement_policy": {
-                "eventq_index": 0, 
-                "path": "system.l3.replacement_policy", 
-                "type": "LRURP", 
-                "name": "replacement_policy", 
-                "cxx_class": "LRURP"
-            }, 
-            "cpu_side": {
-                "peer": "system.tol3bus.master[0]", 
-                "is_source": "False", 
-                "role": "GEM5 RESPONDER"
-            }, 
-            "clusivity": "mostly_incl", 
-            "prefetcher": null, 
-            "system": "system", 
-            "write_buffers": 16, 
-            "response_latency": 32, 
-            "cxx_class": "Cache", 
-            "write_allocator": null, 
-            "size": 16777216, 
-            "clk_domain": "system.cpu_clk_domain", 
-            "max_miss_count": 0, 
-            "eventq_index": 0, 
-            "power_state": {
-                "default_state": "UNDEFINED", 
-                "name": "power_state", 
-                "possible_states": [], 
-                "clk_gate_min": 1000, 
-                "clk_gate_bins": 20, 
-                "eventq_index": 0, 
-                "clk_gate_max": 1000000000000, 
-                "cxx_class": "PowerState", 
-                "path": "system.l3.power_state", 
-                "type": "PowerState", 
-                "leaders": []
-            }, 
-            "mem_side": {
-                "peer": "system.membus.slave[1]", 
-                "is_source": "True", 
-                "role": "GEM5 REQUESTER"
-            }, 
-            "mshrs": 32, 
-            "writeback_clean": false, 
-            "tags": {
-                "tag_latency": 32, 
-                "replacement_policy": "system.l3.replacement_policy", 
-                "name": "tags", 
-                "eventq_index": 0, 
-                "warmup_percentage": 0, 
-                "clk_domain": "system.cpu_clk_domain", 
-                "indexing_policy": {
-                    "name": "indexing_policy", 
-                    "eventq_index": 0, 
-                    "assoc": 16, 
-                    "cxx_class": "SetAssociative", 
-                    "path": "system.l3.tags.indexing_policy", 
-                    "entry_size": 64, 
-                    "type": "SetAssociative", 
-                    "size": 16777216
-                }, 
-                "system": "system", 
-                "sequential_access": false, 
-                "assoc": 16, 
-                "power_model": [], 
-                "power_state": {
-                    "default_state": "UNDEFINED", 
-                    "name": "power_state", 
-                    "possible_states": [], 
-                    "clk_gate_min": 1000, 
-                    "clk_gate_bins": 20, 
-                    "eventq_index": 0, 
-                    "clk_gate_max": 1000000000000, 
-                    "cxx_class": "PowerState", 
-                    "path": "system.l3.tags.power_state", 
-                    "type": "PowerState", 
-                    "leaders": []
-                }, 
-                "cxx_class": "BaseSetAssoc", 
-                "path": "system.l3.tags", 
-                "entry_size": 64, 
-                "block_size": 64, 
-                "type": "BaseSetAssoc", 
-                "size": 16777216
-            }, 
-            "tgts_per_mshr": 24, 
-            "demand_mshr_reserve": 1, 
-            "power_model": [], 
-            "compressor": null, 
-            "is_read_only": false, 
-            "warmup_percentage": 0, 
-            "prefetch_on_access": false, 
-            "path": "system.l3", 
-            "data_latency": 32, 
-            "tag_latency": 32, 
-            "name": "l3", 
-            "addr_ranges": [
-                "0:18446744073709551615"
-            ], 
-            "type": "Cache", 
-            "sequential_access": false, 
-            "assoc": 16
         }, 
         "cpu_voltage_domain": {
             "name": "cpu_voltage_domain", 
