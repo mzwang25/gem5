@@ -1,6 +1,5 @@
 #include "simplesimobj/SimpleObj.hh"
 #include "debug/SimpleObj.hh"
-#include <iostream>
 
 SimpleObj::SimpleObj(SimpleObjParams* p)
     : SimObject(p), event([this]{processEvent();}, name())
