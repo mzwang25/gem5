@@ -9,6 +9,8 @@ class SimpleObj : public SimObject
 {
     private:
         void processEvent();
+        int timesCalled;
+        int latency;
         EventFunctionWrapper event;
 
     public:
