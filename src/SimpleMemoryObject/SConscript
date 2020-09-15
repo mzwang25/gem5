@@ -1,5 +1,0 @@
-Import('*')
-
-DebugFlag('SimpleMemoryObject')
-SimObject('SimpleMemoryObject.py')
-Source('SimpleMemoryObject.cc')
