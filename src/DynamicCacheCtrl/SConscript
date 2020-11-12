@@ -1,0 +1,4 @@
+Import('*')
+SimObject("DynamicCacheCtrl.py")
+Source("dynamic_cache_ctrl.cc")
+DebugFlag('DynamicCacheCtrl')

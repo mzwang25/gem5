@@ -799,6 +799,8 @@ class BaseCache : public ClockedObject
      */
     PacketPtr writecleanBlk(CacheBlk *blk, Request::Flags dest, PacketId id);
 
+    public:
+
     /**
      * Write back dirty blocks in the cache using functional accesses.
      */
@@ -812,6 +814,8 @@ class BaseCache : public ClockedObject
      * want the to write them to memory.
      */
     virtual void memInvalidate() override;
+
+    protected:
 
     /**
      * Determine if there are any dirty blocks in the cache.

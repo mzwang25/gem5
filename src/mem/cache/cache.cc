@@ -1153,6 +1153,7 @@ Cache::handleSnoop(PacketPtr pkt, CacheBlk *blk, bool is_timing,
 
         // if we are returning a writable and dirty (Modified) line,
         // we should be invalidating the line
+
         panic_if(!invalidate && !pkt->hasSharers(),
                  "%s is passing a Modified line through %s, "
                  "but keeping the block", name(), pkt->print());

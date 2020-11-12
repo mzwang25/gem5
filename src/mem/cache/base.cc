@@ -1603,6 +1603,7 @@ void
 BaseCache::writebackVisitor(CacheBlk &blk)
 {
     if (blk.isDirty()) {
+
         assert(blk.isValid());
 
         RequestPtr request = std::make_shared<Request>(

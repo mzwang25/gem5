@@ -1,0 +1,5 @@
+machine(MachineType:L1Cache, "MSI cache")
+    : <parameters>
+{
+    <all state machine code>
+}

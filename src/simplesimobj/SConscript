@@ -1,5 +1,4 @@
 Import('*')
-
-DebugFlag('SimpleObj')
-SimObject('SimpleObj.py')
-Source('SimpleObj.cc')
+SimObject("HelloObj.py")
+Source("hello_object.cc")
+DebugFlag('Hello')
