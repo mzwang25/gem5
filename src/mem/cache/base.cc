@@ -330,9 +330,38 @@ BaseCache::handleTimingReqMiss(PacketPtr pkt, MSHR *mshr, CacheBlk *blk,
     }
 }
 
+
+
 void
 BaseCache::recvTimingReq(PacketPtr pkt)
 {
+
+    //if pkt->isFlush() then I need to do flush out the cache
+    //std::cout <<"hello again " +  pkt->cmdString() << std::endl;
+
+    if(pkt->isFlush())
+    {
+        int numwritebacks = 0;
+        tags->forEachBlk([this](CacheBlk &blk) 
+            { 
+                if(blk.isValid() && blk.isDirty())
+                {
+                    PacketList wbs;
+                    wbs.push_back(this->writebackBlk(&blk)); 
+                    std::cout <<"wroteback"<< std::endl;
+                    numwritebacks++;
+                    //doWritebacks(wbs, 0);
+                }
+            });
+
+
+
+        std::cout <<"got size"<< std::endl;
+        std::cout <<"did wb"<< std::endl;
+    }
+
+
+
     // anything that is merely forwarded pays for the forward latency and
     // the delay provided by the crossbar
     Tick forward_time = clockEdge(forwardLatency) + pkt->headerDelay;
@@ -350,6 +379,7 @@ BaseCache::recvTimingReq(PacketPtr pkt)
         // to the write buffer to ensure they logically precede anything
         // happening below
         doWritebacks(writebacks, clockEdge(lat + forwardLatency));
+
     }
 
     // Here we charge the headerDelay that takes into account the latencies
@@ -1475,6 +1505,7 @@ BaseCache::invalidateBlock(CacheBlk *blk)
 void
 BaseCache::evictBlock(CacheBlk *blk, PacketList &writebacks)
 {
+
     PacketPtr pkt = evictBlock(blk);
     if (pkt) {
         writebacks.push_back(pkt);

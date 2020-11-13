@@ -129,11 +129,17 @@ NoncoherentCache::handleTimingReqMiss(PacketPtr pkt, CacheBlk *blk,
 void
 NoncoherentCache::recvTimingReq(PacketPtr pkt)
 {
+
     panic_if(pkt->cacheResponding(), "Should not see packets where cache "
              "is responding");
 
-    panic_if(!(pkt->isRead() || pkt->isWrite()),
-             "Should only see read and writes at non-coherent cache\n");
+    //if pkt->isFlush() then I need to do flush out the cache
+    if(!pkt->isFlush())
+    {
+        panic_if(!(pkt->isRead() || pkt->isWrite()),
+                 "Should only see read and writes at non-coherent cache\n");
+    }
+
 
     BaseCache::recvTimingReq(pkt);
 }

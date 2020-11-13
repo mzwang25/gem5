@@ -65,11 +65,11 @@ DynamicCacheCtrl::mem_port_to_use()
     //Right it starts with no cache -> cache -> no cache
     if(current_inst < 2000000)
     {
-        next_state = USING_NONE;
+        next_state = USING_CACHE;
     }
     else
     {
-        next_state = USING_NONE;
+        next_state = USING_CACHE;
     }
 
     //current_inst may never reach 1mil so mod won't work
@@ -89,8 +89,8 @@ DynamicCacheCtrl::mem_port_to_use()
         Tick tickNow = curTick();
 
 
-        cache_small->memWriteback();
-        cache_small->memInvalidate();
+        //cache_small->memWriteback();
+        //cache_small->memInvalidate();
         
         invalidation_ticks = curTick() - tickNow;
     }
@@ -121,7 +121,17 @@ DynamicCacheCtrl::handleTimingReq(PacketPtr pkt)
     //Right now the switch occurs based on the current Tick
     MemSidePort* port_to_use = mem_port_to_use();
 
-    bool result = (port_to_use) -> sendTimingReq(pkt);
+    bool result = false; 
+    if(curTick() > 15037700000)
+    {
+        RequestPtr req = std::make_shared<Request>(0, 10, 0, 0);
+        Packet* newpkt = new Packet(req, MemCmd::FlushReq);
+        //std::cout <<"hello " +  newpkt->cmdString() << std::endl;
+
+        result = (port_to_use) -> sendTimingReq(newpkt);
+    }
+    else
+        result = (port_to_use) -> sendTimingReq(pkt);
 
     // if mem_side is unable to send packet, store/retry
     if (!result) 

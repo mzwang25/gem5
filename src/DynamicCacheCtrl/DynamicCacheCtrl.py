@@ -13,9 +13,9 @@ class DynamicCacheCtrl(SimObject):
     mem_side = MasterPort("Memory side port, sends requests")
 
 
-    cache_small = Param.Cache("A Cache Object")
-    cache_medium = Param.Cache("A Cache Object")
-    cache_large = Param.Cache("A Cache Object")
+    cache_small = Param.NoncoherentCache("A Cache Oject")
+    cache_medium = Param.NoncoherentCache("A Cache Object")
+    cache_large = Param.NoncoherentCache("A Cache Object")
 
     cpu_object = Param.BaseCPU("A CPU Object")
 

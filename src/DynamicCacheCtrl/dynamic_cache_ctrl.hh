@@ -58,9 +58,9 @@ class DynamicCacheCtrl : public SimObject
         MemSidePort cache_side_large;
 
         //connected cache
-        Cache* cache_small;
-        Cache* cache_medium;
-        Cache* cache_large;
+        NoncoherentCache* cache_small;
+        NoncoherentCache* cache_medium;
+        NoncoherentCache* cache_large;
 
         //connected cpu
         BaseCPU* cpu_object;

@@ -34,7 +34,7 @@ else:
 ###############################################################################
 # Some Caches
 
-class L1Cache(Cache):
+class L1Cache(NoncoherentCache):
     assoc = 1
     size = '32kB'
     tag_latency = 2
@@ -47,7 +47,7 @@ class L1Cache(Cache):
         super(L1Cache, self).__init__()
         pass
 
-class L2Cache(Cache):
+class L2Cache(NoncoherentCache):
     assoc = 1
     size = '1024kB'
     tag_latency = 2
@@ -60,7 +60,7 @@ class L2Cache(Cache):
         super(L2Cache, self).__init__()
         pass
 
-class L3Cache(Cache):
+class L3Cache(NoncoherentCache):
     assoc = 1
     size = '8192kB'
     tag_latency = 2
@@ -89,7 +89,7 @@ system.dynamic_cache = DynamicCacheCtrl()
 system.dcache = L1Cache()
 system.icache = L1Cache()
 system.l2cache = L2Cache()
-system.membus = SystemXBar()
+system.membus = IOXBar()
 system.l2bar = IOXBar()
 
 # CPU 
