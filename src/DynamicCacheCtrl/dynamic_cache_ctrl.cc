@@ -70,7 +70,7 @@ DynamicCacheCtrl::mem_port_to_use(bool& needCacheFlush)
     //Right it starts with no cache -> cache -> no cache
     if(current_inst < 2000000)
     {
-        next_state = USING_CACHE;
+        next_state = USING_NONE;
     }
     else
     {
@@ -123,10 +123,6 @@ DynamicCacheCtrl::mem_port_to_use(bool& needCacheFlush)
 bool
 DynamicCacheCtrl::handleTimingReq(PacketPtr pkt)
 {
-    if(blocked_packet || cacheFlushWait)
-    {
-        return false;
-    }
 
     //Right now the switch occurs based on the current Tick
     bool needCacheFlush = false;
@@ -134,7 +130,7 @@ DynamicCacheCtrl::handleTimingReq(PacketPtr pkt)
 
     bool result = false; 
 
-    if(needCacheFlush)
+    if(needCacheFlush && false)
     {
         LOG("Cache Flush requested");
         cacheFlushWait = true;
@@ -156,18 +152,16 @@ DynamicCacheCtrl::handleTimingReq(PacketPtr pkt)
     if (!result) 
     {
         blocked_packet = pkt;    
-        std::cout << "Blocked!" << std::endl;
     }
 
     //TODO: Figure out what to return
-    return result;
+    return true;
 }
 
 void
-DynamicCacheCtrl::MemSidePort::recvReqRetry()
+DynamicCacheCtrl::MemSidePort::recvReqRetry() 
 {
-
-    if(owner->blocked_packet == 0) //flush has completed
+    if(!owner->blocked_packet) //flush has completed
     {
         LOG("Got flush has completed");
         owner->cacheFlushWait = false; 
@@ -177,10 +171,6 @@ DynamicCacheCtrl::MemSidePort::recvReqRetry()
     {
         owner->blocked_packet = 0;
     }
-
-    LOG("send retry");
-    owner->cpu_side.sendRetryReq();
-    LOG("retry sent");
 }
 
 bool

@@ -40,5 +40,5 @@ echo
 }
 
 # Run gem5
-${GEM5OPT} --outdir=${OUTDIR} --debug-flags=DynamicCacheCtrl ${SPEC17CFG} ${ACTUALBENCHNAME} ${MAXINST}
+${GEM5OPT} --outdir=${OUTDIR} --debug-flags=DynamicCacheCtrl ${SPEC17CFG} ${ACTUALBENCHNAME} ${MAXINST} 
 

@@ -49,7 +49,7 @@ class L1Cache(NoncoherentCache):
 
 class L2Cache(NoncoherentCache):
     assoc = 1
-    size = '1024kB'
+    size = '64kB'
     tag_latency = 2
     data_latency = 2
     response_latency = 2

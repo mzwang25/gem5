@@ -13,9 +13,6 @@ lbm_r:
 gcc_r:
 	./run_gem5_spec17_benchmark.sh gcc_r ${OUTDIR}/gcc_r 5000000
 
-bwaves_r:
-	./run_gem5_spec17_benchmark.sh bwaves_r ${OUTDIR}/bwaves_r 5000000
-
 mcf_r:
 	./run_gem5_spec17_benchmark.sh mcf_r ${OUTDIR}/mcf_r  5000000
 
@@ -33,16 +30,14 @@ povray_r:
 
 
 omnetpp_r:
-	./run_gem5_spec17_benchmark.sh omnetpp_r ${OUTDIR}/omnetpp_r  50000000
+	./run_gem5_spec17_benchmark.sh omnetpp_r ${OUTDIR}/omnetpp_r  5000000
 
 spec:
-	make lbm_r
-	make gcc_r
-	make bwaves_r
-	make mcf_r
-	make cactuBSSN_r
-	make namd_r
-	make parest_r
-	make povray_r
-	make lbm_r
-	make omnetpp_r
+	make lbm_r&
+	make gcc_r&
+	make mcf_r&
+	make cactuBSSN_r&
+	make namd_r&
+	make parest_r&
+	make povray_r&
+	make omnetpp_r&
