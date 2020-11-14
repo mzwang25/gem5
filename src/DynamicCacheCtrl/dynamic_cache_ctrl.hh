@@ -69,7 +69,9 @@ class DynamicCacheCtrl : public SimObject
         PacketPtr blocked_packet;
 
         //This function determines which port to use
-        MemSidePort* mem_port_to_use();
+        //needCacheFlush is passed by reference and set to True if there 
+        //requires a cache flush after function return
+        MemSidePort* mem_port_to_use(bool& needCacheFlush);
 
         //Stores what the module is currently doing (using Cache or not)
         bool current_state;
@@ -78,6 +80,9 @@ class DynamicCacheCtrl : public SimObject
         Stats::Scalar invalidation_ticks;
 
         int lastStatDump;
+
+        bool justDumped;
+        bool cacheFlushWait;
 
     public:
         DynamicCacheCtrl(DynamicCacheCtrlParams* params);

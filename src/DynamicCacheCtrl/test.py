@@ -66,8 +66,8 @@ class L3Cache(NoncoherentCache):
     tag_latency = 2
     data_latency = 2
     response_latency = 2
-    mshrs = 4
-    tgts_per_mshr = 20
+    mshrs = 400000
+    tgts_per_mshr = 2000
 
 
     def __init__(self, options=None):

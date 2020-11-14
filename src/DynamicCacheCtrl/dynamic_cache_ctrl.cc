@@ -20,7 +20,9 @@ DynamicCacheCtrl::DynamicCacheCtrl(DynamicCacheCtrlParams* params) :
     cpu_object(params->cpu_object),
     blocked_packet(0),
     current_state(USING_NONE),
-    lastStatDump(0)
+    lastStatDump(0),
+    justDumped(false),
+    cacheFlushWait(false)
 {}
 
 DynamicCacheCtrl*
@@ -51,11 +53,14 @@ bool
 DynamicCacheCtrl::CPUSidePort::recvTimingReq(PacketPtr pkt)
 {
 
-    return owner->handleTimingReq(pkt);
+    bool handle = owner->handleTimingReq(pkt);
+    if(!handle)
+        LOG("Decline Request");
+    return handle;
 }
 
 DynamicCacheCtrl::MemSidePort*
-DynamicCacheCtrl::mem_port_to_use()
+DynamicCacheCtrl::mem_port_to_use(bool& needCacheFlush)
 {
     bool next_state;
 
@@ -69,7 +74,7 @@ DynamicCacheCtrl::mem_port_to_use()
     }
     else
     {
-        next_state = USING_CACHE;
+        next_state = USING_NONE;
     }
 
     //current_inst may never reach 1mil so mod won't work
@@ -91,6 +96,7 @@ DynamicCacheCtrl::mem_port_to_use()
 
         //cache_small->memWriteback();
         //cache_small->memInvalidate();
+        needCacheFlush = true;
         
         invalidation_ticks = curTick() - tickNow;
     }
@@ -117,40 +123,64 @@ DynamicCacheCtrl::mem_port_to_use()
 bool
 DynamicCacheCtrl::handleTimingReq(PacketPtr pkt)
 {
+    if(blocked_packet || cacheFlushWait)
+    {
+        return false;
+    }
 
     //Right now the switch occurs based on the current Tick
-    MemSidePort* port_to_use = mem_port_to_use();
+    bool needCacheFlush = false;
+    MemSidePort* port_to_use = mem_port_to_use(needCacheFlush);
 
     bool result = false; 
-    if(curTick() > 15037700000)
+
+    if(needCacheFlush)
     {
+        LOG("Cache Flush requested");
+        cacheFlushWait = true;
         RequestPtr req = std::make_shared<Request>(0, 10, 0, 0);
         Packet* newpkt = new Packet(req, MemCmd::FlushReq);
-        //std::cout <<"hello " +  newpkt->cmdString() << std::endl;
-
-        result = (port_to_use) -> sendTimingReq(newpkt);
+        result = cache_side_small.sendTimingReq(newpkt);
+        assert(result);
+        LOG("Returning False");
+        return false;
     }
+
     else
+    {
         result = (port_to_use) -> sendTimingReq(pkt);
+    }
+
 
     // if mem_side is unable to send packet, store/retry
     if (!result) 
     {
         blocked_packet = pkt;    
+        std::cout << "Blocked!" << std::endl;
     }
 
     //TODO: Figure out what to return
-    return true;
+    return result;
 }
 
 void
 DynamicCacheCtrl::MemSidePort::recvReqRetry()
 {
 
-    panic_if(owner->blocked_packet == 0, "No packet to retry!");
+    if(owner->blocked_packet == 0) //flush has completed
+    {
+        LOG("Got flush has completed");
+        owner->cacheFlushWait = false; 
+    }
 
-    if (sendTimingReq(owner->blocked_packet)) 
+    else if (sendTimingReq(owner->blocked_packet)) 
+    {
         owner->blocked_packet = 0;
+    }
+
+    LOG("send retry");
+    owner->cpu_side.sendRetryReq();
+    LOG("retry sent");
 }
 
 bool
