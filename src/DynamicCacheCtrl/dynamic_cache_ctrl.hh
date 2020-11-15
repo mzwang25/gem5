@@ -77,9 +77,11 @@ class DynamicCacheCtrl : public SimObject
         bool current_state;
 
         //Some stats here
-        Stats::Scalar invalidation_ticks;
+        Stats::Scalar flush_ticks;
+        Stats::Scalar num_flushes;
 
         int lastStatDump;
+        Tick lastFlushReq;
 
         bool justDumped;
         bool cacheFlushWait;

@@ -23,11 +23,13 @@ DynamicCacheCtrl::DynamicCacheCtrl(DynamicCacheCtrlParams* params) :
     blocked_packet(0),
     current_state(USING_NONE),
     lastStatDump(0),
+    lastFlushReq(0),
     justDumped(false),
     cacheFlushWait(false),
     needCPURetry(false)
 {
     dynamic_cache_global = this;    
+    num_flushes = 0;
 }
 
 DynamicCacheCtrl*
@@ -42,6 +44,14 @@ DynamicCacheCtrl::notifyFlush()
     if(cacheFlushWait)
     {
        LOG("Cache Flush Completed");
+
+       //TODO: a moving average w flush_ticks
+       std::cout << "took " 
+                 << curTick() - lastFlushReq
+                 << " ticks for flush" 
+                 << std::endl;
+
+       //CPU is waiting for flush to end so tell it to resend
        cacheFlushWait = false;
        cpu_side.sendRetryReq();
     }
@@ -102,18 +112,13 @@ DynamicCacheCtrl::mem_port_to_use(bool& needCacheFlush)
     if(current_state == USING_CACHE && next_state == USING_NONE)
     {
         LOG("Switching from USING_CACHE to USING_NONE");
-
-        Tick tickNow = curTick();
-
         needCacheFlush = true;
         
-        invalidation_ticks = curTick() - tickNow;
     }
 
     else if(current_state == USING_NONE && next_state == USING_CACHE)
     {
         LOG("Switching from USING_NONE to USING_CACHE");
-        invalidation_ticks = 0;
     }
 
     current_state = next_state;
@@ -149,6 +154,7 @@ DynamicCacheCtrl::handleTimingReq(PacketPtr pkt)
     if(needCacheFlush)
     {
         LOG("Cache Flush requested");
+        lastFlushReq = curTick();
         cacheFlushWait = true;
         RequestPtr req = std::make_shared<Request>(0, 10, 0, 0);
         Packet* newpkt = new Packet(req, MemCmd::FlushReq);
@@ -210,5 +216,6 @@ void
 DynamicCacheCtrl::regStats()
 {
     SimObject::regStats();
-    invalidation_ticks.name(name() + ".invTick").desc("Ticks taken to invalidate");
+    flush_ticks.name(name() + ".flushTicks").desc("Ticks taken to flush");
+    num_flushes.name(name() + ".numFlushes").desc("Number of Flushes Taken");
 }
