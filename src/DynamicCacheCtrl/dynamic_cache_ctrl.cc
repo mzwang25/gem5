@@ -7,6 +7,8 @@
 #define USING_CACHE 0
 #define USING_NONE 1
 
+DynamicCacheCtrl* dynamic_cache_global;
+
 DynamicCacheCtrl::DynamicCacheCtrl(DynamicCacheCtrlParams* params) : 
     SimObject(params),
     cpu_side(params->name + ".cpu_side", this),
@@ -21,14 +23,38 @@ DynamicCacheCtrl::DynamicCacheCtrl(DynamicCacheCtrlParams* params) :
     blocked_packet(0),
     current_state(USING_NONE),
     lastStatDump(0),
+    lastFlushReq(0),
     justDumped(false),
-    cacheFlushWait(false)
-{}
+    cacheFlushWait(false),
+    needCPURetry(false)
+{
+    dynamic_cache_global = this;    
+    num_flushes = 0;
+}
 
 DynamicCacheCtrl*
 DynamicCacheCtrlParams::create() 
 {
     return new DynamicCacheCtrl(this);
+}
+
+void
+DynamicCacheCtrl::notifyFlush()
+{
+    if(cacheFlushWait)
+    {
+       LOG("Cache Flush Completed");
+
+       //TODO: a moving average w flush_ticks
+       std::cout << "took " 
+                 << curTick() - lastFlushReq
+                 << " ticks for flush" 
+                 << std::endl;
+
+       //CPU is waiting for flush to end so tell it to resend
+       cacheFlushWait = false;
+       cpu_side.sendRetryReq();
+    }
 }
 
 Port&
@@ -52,11 +78,7 @@ DynamicCacheCtrl::getPort(const std:: string& if_name, PortID idx)
 bool
 DynamicCacheCtrl::CPUSidePort::recvTimingReq(PacketPtr pkt)
 {
-
-    bool handle = owner->handleTimingReq(pkt);
-    if(!handle)
-        LOG("Decline Request");
-    return handle;
+    return owner->handleTimingReq(pkt);
 }
 
 DynamicCacheCtrl::MemSidePort*
@@ -68,9 +90,9 @@ DynamicCacheCtrl::mem_port_to_use(bool& needCacheFlush)
     Counter current_inst = cpu_object -> numSimulatedInsts();
 
     //Right it starts with no cache -> cache -> no cache
-    if(current_inst < 2000000)
+    if(current_inst < 1000000)
     {
-        next_state = USING_NONE;
+        next_state = USING_CACHE;
     }
     else
     {
@@ -90,21 +112,13 @@ DynamicCacheCtrl::mem_port_to_use(bool& needCacheFlush)
     if(current_state == USING_CACHE && next_state == USING_NONE)
     {
         LOG("Switching from USING_CACHE to USING_NONE");
-
-        Tick tickNow = curTick();
-
-
-        //cache_small->memWriteback();
-        //cache_small->memInvalidate();
         needCacheFlush = true;
         
-        invalidation_ticks = curTick() - tickNow;
     }
 
     else if(current_state == USING_NONE && next_state == USING_CACHE)
     {
         LOG("Switching from USING_NONE to USING_CACHE");
-        invalidation_ticks = 0;
     }
 
     current_state = next_state;
@@ -123,6 +137,13 @@ DynamicCacheCtrl::mem_port_to_use(bool& needCacheFlush)
 bool
 DynamicCacheCtrl::handleTimingReq(PacketPtr pkt)
 {
+    //CPU sent a packet but we will reject it
+    //requires notification
+    if(blocked_packet)
+    {
+        needCPURetry = true;
+        return false;
+    }
 
     //Right now the switch occurs based on the current Tick
     bool needCacheFlush = false;
@@ -130,15 +151,15 @@ DynamicCacheCtrl::handleTimingReq(PacketPtr pkt)
 
     bool result = false; 
 
-    if(needCacheFlush && false)
+    if(needCacheFlush)
     {
         LOG("Cache Flush requested");
+        lastFlushReq = curTick();
         cacheFlushWait = true;
         RequestPtr req = std::make_shared<Request>(0, 10, 0, 0);
         Packet* newpkt = new Packet(req, MemCmd::FlushReq);
         result = cache_side_small.sendTimingReq(newpkt);
         assert(result);
-        LOG("Returning False");
         return false;
     }
 
@@ -154,23 +175,28 @@ DynamicCacheCtrl::handleTimingReq(PacketPtr pkt)
         blocked_packet = pkt;    
     }
 
-    //TODO: Figure out what to return
+    //Returns true because CPU shouldn't worry about this blocked pkt
     return true;
 }
 
 void
 DynamicCacheCtrl::MemSidePort::recvReqRetry() 
 {
-    if(!owner->blocked_packet) //flush has completed
-    {
-        LOG("Got flush has completed");
-        owner->cacheFlushWait = false; 
-    }
+    assert(owner->blocked_packet);
 
-    else if (sendTimingReq(owner->blocked_packet)) 
+    if (sendTimingReq(owner->blocked_packet)) 
     {
         owner->blocked_packet = 0;
     }
+
+    // We might need CPU to retry its packet if we declined
+    // when it first arrived
+    if(owner->needCPURetry)
+    {
+        owner->cpu_side.sendRetryReq();
+        owner->needCPURetry = false;
+    }
+
 }
 
 bool
@@ -190,5 +216,6 @@ void
 DynamicCacheCtrl::regStats()
 {
     SimObject::regStats();
-    invalidation_ticks.name(name() + ".invTick").desc("Ticks taken to invalidate");
+    flush_ticks.name(name() + ".flushTicks").desc("Ticks taken to flush");
+    num_flushes.name(name() + ".numFlushes").desc("Number of Flushes Taken");
 }

@@ -337,7 +337,6 @@ BaseCache::recvTimingReq(PacketPtr pkt)
 {
 
     //if pkt->isFlush() then I need to do flush out the cache
-    //std::cout <<"hello again " +  pkt->cmdString() << std::endl;
 
     PacketList wbs;
     if(pkt->isFlush())
@@ -351,11 +350,6 @@ BaseCache::recvTimingReq(PacketPtr pkt)
             });
 
         doWritebacks(wbs, 0);
-        std::cout <<"successful cache flush"<< std::endl;
-
-        cpuSidePort.sendRetryReq();
-        std::cout <<"sent flush response"<< std::endl;
-
         return;
     }
 
@@ -430,6 +424,7 @@ BaseCache::handleUncacheableWriteResp(PacketPtr pkt)
 void
 BaseCache::recvTimingResp(PacketPtr pkt)
 {
+    //std::cout <<"hello again " +  pkt->cmdString() << std::endl;
     assert(pkt->isResponse());
 
     // all header delay should be paid for by the crossbar, unless
@@ -1527,6 +1522,7 @@ BaseCache::writebackBlk(CacheBlk *blk)
         req->setFlags(Request::SECURE);
 
     req->taskId(blk->task_id);
+
 
     PacketPtr pkt =
         new Packet(req, blk->isDirty() ?
