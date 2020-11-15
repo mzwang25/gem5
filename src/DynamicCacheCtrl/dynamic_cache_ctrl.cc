@@ -22,7 +22,8 @@ DynamicCacheCtrl::DynamicCacheCtrl(DynamicCacheCtrlParams* params) :
     current_state(USING_NONE),
     lastStatDump(0),
     justDumped(false),
-    cacheFlushWait(false)
+    cacheFlushWait(false),
+    needCPURetry(false)
 {}
 
 DynamicCacheCtrl*
@@ -52,11 +53,7 @@ DynamicCacheCtrl::getPort(const std:: string& if_name, PortID idx)
 bool
 DynamicCacheCtrl::CPUSidePort::recvTimingReq(PacketPtr pkt)
 {
-
-    bool handle = owner->handleTimingReq(pkt);
-    if(!handle)
-        LOG("Decline Request");
-    return handle;
+    return owner->handleTimingReq(pkt);
 }
 
 DynamicCacheCtrl::MemSidePort*
@@ -123,6 +120,13 @@ DynamicCacheCtrl::mem_port_to_use(bool& needCacheFlush)
 bool
 DynamicCacheCtrl::handleTimingReq(PacketPtr pkt)
 {
+    //CPU sent a packet but we will reject it
+    //requires notification
+    if(blocked_packet)
+    {
+        needCPURetry = true;
+        return false;
+    }
 
     //Right now the switch occurs based on the current Tick
     bool needCacheFlush = false;
@@ -154,7 +158,7 @@ DynamicCacheCtrl::handleTimingReq(PacketPtr pkt)
         blocked_packet = pkt;    
     }
 
-    //TODO: Figure out what to return
+    //Returns true because CPU shouldn't worry about this blocked pkt
     return true;
 }
 
@@ -171,6 +175,15 @@ DynamicCacheCtrl::MemSidePort::recvReqRetry()
     {
         owner->blocked_packet = 0;
     }
+
+    // We might need CPU to retry its packet if we declined
+    // when it first arrived
+    if(owner->needCPURetry)
+    {
+        owner->cpu_side.sendRetryReq();
+        owner->needCPURetry = false;
+    }
+
 }
 
 bool

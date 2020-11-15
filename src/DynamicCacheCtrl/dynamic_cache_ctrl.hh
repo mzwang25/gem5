@@ -83,6 +83,7 @@ class DynamicCacheCtrl : public SimObject
 
         bool justDumped;
         bool cacheFlushWait;
+        bool needCPURetry;
 
     public:
         DynamicCacheCtrl(DynamicCacheCtrlParams* params);

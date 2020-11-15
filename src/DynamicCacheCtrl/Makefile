@@ -4,6 +4,9 @@ OUTDIR=${CWD}/RESULTS
 build:
 	~/michael/bin/g5b
 
+stat:
+	./mkstats.sh ${OUTDIR}/
+
 test:
 	./run_gem5_spec17_benchmark.sh lbm_r ${OUTDIR}/test 3000000
 
@@ -33,11 +36,11 @@ omnetpp_r:
 	./run_gem5_spec17_benchmark.sh omnetpp_r ${OUTDIR}/omnetpp_r  5000000
 
 spec:
-	make lbm_r&
-	make gcc_r&
-	make mcf_r&
-	make cactuBSSN_r&
-	make namd_r&
-	make parest_r&
-	make povray_r&
-	make omnetpp_r&
+	make lbm_r &
+	make gcc_r &
+	make mcf_r &
+	make cactuBSSN_r &
+	make namd_r &
+	make parest_r &
+	make povray_r &
+	make omnetpp_r &
