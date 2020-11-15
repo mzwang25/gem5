@@ -250,7 +250,6 @@ class Queue : public Drainable
 
         if(allocated == 0) {
             //I need to somehow send something back to cache
-            std::cout << "Sending notifyFlush" << std::endl;
             dynamic_cache_global->notifyFlush();
         }
 

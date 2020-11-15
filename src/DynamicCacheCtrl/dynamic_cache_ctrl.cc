@@ -40,7 +40,11 @@ void
 DynamicCacheCtrl::notifyFlush()
 {
     if(cacheFlushWait)
-       LOG("notifyFlush");
+    {
+       LOG("Cache Flush Completed");
+       cacheFlushWait = false;
+       cpu_side.sendRetryReq();
+    }
 }
 
 Port&
@@ -76,7 +80,7 @@ DynamicCacheCtrl::mem_port_to_use(bool& needCacheFlush)
     Counter current_inst = cpu_object -> numSimulatedInsts();
 
     //Right it starts with no cache -> cache -> no cache
-    if(current_inst < 100000)
+    if(current_inst < 1000000)
     {
         next_state = USING_CACHE;
     }
@@ -101,9 +105,6 @@ DynamicCacheCtrl::mem_port_to_use(bool& needCacheFlush)
 
         Tick tickNow = curTick();
 
-
-        //cache_small->memWriteback();
-        //cache_small->memInvalidate();
         needCacheFlush = true;
         
         invalidation_ticks = curTick() - tickNow;
@@ -153,7 +154,6 @@ DynamicCacheCtrl::handleTimingReq(PacketPtr pkt)
         Packet* newpkt = new Packet(req, MemCmd::FlushReq);
         result = cache_side_small.sendTimingReq(newpkt);
         assert(result);
-        LOG("Returning False");
         return false;
     }
 
@@ -176,13 +176,9 @@ DynamicCacheCtrl::handleTimingReq(PacketPtr pkt)
 void
 DynamicCacheCtrl::MemSidePort::recvReqRetry() 
 {
-    if(!owner->blocked_packet) //flush has completed
-    {
-        LOG("Got flush has completed");
-        //owner->cacheFlushWait = false; 
-    }
+    assert(owner->blocked_packet);
 
-    else if (sendTimingReq(owner->blocked_packet)) 
+    if (sendTimingReq(owner->blocked_packet)) 
     {
         owner->blocked_packet = 0;
     }

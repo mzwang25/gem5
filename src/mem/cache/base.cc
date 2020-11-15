@@ -337,7 +337,6 @@ BaseCache::recvTimingReq(PacketPtr pkt)
 {
 
     //if pkt->isFlush() then I need to do flush out the cache
-    //std::cout <<"hello again " +  pkt->cmdString() << std::endl;
 
     PacketList wbs;
     if(pkt->isFlush())
@@ -351,11 +350,6 @@ BaseCache::recvTimingReq(PacketPtr pkt)
             });
 
         doWritebacks(wbs, 0);
-        std::cout <<"successful cache flush"<< std::endl;
-
-        cpuSidePort.sendRetryReq();
-        std::cout <<"sent flush response"<< std::endl;
-
         return;
     }
 
