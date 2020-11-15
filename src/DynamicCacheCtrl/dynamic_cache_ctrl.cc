@@ -7,6 +7,8 @@
 #define USING_CACHE 0
 #define USING_NONE 1
 
+DynamicCacheCtrl* dynamic_cache_global;
+
 DynamicCacheCtrl::DynamicCacheCtrl(DynamicCacheCtrlParams* params) : 
     SimObject(params),
     cpu_side(params->name + ".cpu_side", this),
@@ -24,12 +26,21 @@ DynamicCacheCtrl::DynamicCacheCtrl(DynamicCacheCtrlParams* params) :
     justDumped(false),
     cacheFlushWait(false),
     needCPURetry(false)
-{}
+{
+    dynamic_cache_global = this;    
+}
 
 DynamicCacheCtrl*
 DynamicCacheCtrlParams::create() 
 {
     return new DynamicCacheCtrl(this);
+}
+
+void
+DynamicCacheCtrl::notifyFlush()
+{
+    if(cacheFlushWait)
+       LOG("notifyFlush");
 }
 
 Port&
@@ -65,9 +76,9 @@ DynamicCacheCtrl::mem_port_to_use(bool& needCacheFlush)
     Counter current_inst = cpu_object -> numSimulatedInsts();
 
     //Right it starts with no cache -> cache -> no cache
-    if(current_inst < 2000000)
+    if(current_inst < 100000)
     {
-        next_state = USING_NONE;
+        next_state = USING_CACHE;
     }
     else
     {
@@ -134,7 +145,7 @@ DynamicCacheCtrl::handleTimingReq(PacketPtr pkt)
 
     bool result = false; 
 
-    if(needCacheFlush && false)
+    if(needCacheFlush)
     {
         LOG("Cache Flush requested");
         cacheFlushWait = true;
@@ -168,7 +179,7 @@ DynamicCacheCtrl::MemSidePort::recvReqRetry()
     if(!owner->blocked_packet) //flush has completed
     {
         LOG("Got flush has completed");
-        owner->cacheFlushWait = false; 
+        //owner->cacheFlushWait = false; 
     }
 
     else if (sendTimingReq(owner->blocked_packet)) 

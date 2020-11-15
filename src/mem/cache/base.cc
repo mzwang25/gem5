@@ -430,6 +430,7 @@ BaseCache::handleUncacheableWriteResp(PacketPtr pkt)
 void
 BaseCache::recvTimingResp(PacketPtr pkt)
 {
+    //std::cout <<"hello again " +  pkt->cmdString() << std::endl;
     assert(pkt->isResponse());
 
     // all header delay should be paid for by the crossbar, unless
@@ -1527,6 +1528,7 @@ BaseCache::writebackBlk(CacheBlk *blk)
         req->setFlags(Request::SECURE);
 
     req->taskId(blk->task_id);
+
 
     PacketPtr pkt =
         new Packet(req, blk->isDirty() ?

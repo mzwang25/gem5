@@ -45,6 +45,7 @@
 #ifndef __MEM_CACHE_QUEUE_HH__
 #define __MEM_CACHE_QUEUE_HH__
 
+
 #include <cassert>
 #include <string>
 #include <type_traits>
@@ -57,6 +58,9 @@
 #include "mem/packet.hh"
 #include "sim/core.hh"
 #include "sim/drain.hh"
+
+#include "DynamicCacheCtrl/dynamic_cache_ctrl.hh"
+extern DynamicCacheCtrl* dynamic_cache_global;
 
 /**
  * A high-level queue interface, to be used by both the MSHR queue and
@@ -233,6 +237,7 @@ class Queue : public Drainable
      */
     void deallocate(Entry *entry)
     {
+
         allocatedList.erase(entry->allocIter);
         freeList.push_front(entry);
         allocated--;
@@ -242,6 +247,13 @@ class Queue : public Drainable
             readyList.erase(entry->readyIter);
         }
         entry->deallocate();
+
+        if(allocated == 0) {
+            //I need to somehow send something back to cache
+            std::cout << "Sending notifyFlush" << std::endl;
+            dynamic_cache_global->notifyFlush();
+        }
+
         if (drainState() == DrainState::Draining && allocated == 0) {
             // Notify the drain manager that we have completed
             // draining if there are no other outstanding requests in

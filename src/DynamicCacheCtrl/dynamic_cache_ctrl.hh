@@ -2,7 +2,7 @@
 #define __DYNAMIC_CACHE_CTRL__
 
 #include "mem/port.hh"
-#include "mem/cache/cache.hh"
+//#include "mem/cache/cache.hh"    ! Giving Compilation errors when included in queue.hh
 #include "cpu/base.hh"
 #include "params/DynamicCacheCtrl.hh"
 #include "sim/sim_object.hh"
@@ -96,6 +96,7 @@ class DynamicCacheCtrl : public SimObject
         {
             cpu_side.sendRangeChange();
         }
+        void notifyFlush();
 
         void regStats() override;
 };
