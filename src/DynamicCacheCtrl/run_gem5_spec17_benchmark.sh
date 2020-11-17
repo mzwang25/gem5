@@ -14,7 +14,7 @@ MAXINST=$3
 #Check proper number of arguments
 if [ ! $# -eq 3 ];
 then
-    echo "run_gem5_spec17_benchmarks.sh <BENCHMARK> <OUTDIR>"
+    echo "run_gem5_spec17_benchmarks.sh <BENCHMARK> <OUTDIR> <MAXINST>"
     echo "! OUTDIR should be a absolute path like ~/michael/outdir"
     echo "  or the directory will end up in a weird location"
     exit 1
