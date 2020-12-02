@@ -19,6 +19,8 @@ class DynamicCacheCtrl(SimObject):
 
     cpu_object = Param.BaseCPU("A CPU Object")
 
+    accountFlush = Param.Bool("Wait for cache flush to finish")
+
     def connectCaches(self, membus, cache1, cache2, cache3):
         self.cache_small = cache1
         self.cache_medium = cache2

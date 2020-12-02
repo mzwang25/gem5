@@ -87,6 +87,8 @@ class DynamicCacheCtrl : public SimObject
         bool cacheFlushWait;
         bool needCPURetry;
 
+        bool accountFlush;
+
     public:
         DynamicCacheCtrl(DynamicCacheCtrlParams* params);
         Port& getPort(const std::string& if_name, PortID idx);

@@ -1,0 +1,1321 @@
+./run_all <OUTDIR> <MAXINST>
+rm -rf /home/nanoproj/michael/gem5/src/DynamicCacheCtrl/RESULTS
+./run_all.sh /home/nanoproj/michael/gem5/src/DynamicCacheCtrl/RESULTS 7000000
+./run_all.sh: line 62: [: missing `]'
+Found Benchmark: 500.perlbench_r
+
+warn: CheckedInt already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: Enum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: ScopedEnum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 version 20.0.0.2
+gem5 compiled Nov 29 2020 20:59:58
+gem5 started Nov 29 2020 21:29:29
+gem5 executing on nanocad-server-testbed, pid 139564
+command line: /home/nanoproj/michael/gem5/build/X86/gem5.opt --outdir=/home/nanoproj/michael/gem5/src/DynamicCacheCtrl/RESULTS/perlbench_r --debug-flags=DynamicCacheCtrl /home/nanoproj/michael/gem5/src/DynamicCacheCtrl/no_dc_config.py -b 500.perlbench_r -i 7000000 -l 64kB
+
+info: Standard input is not a terminal, disabling listeners.
+Selected SPEC_CPU2017 Benchmark
+--> 500.perlbench_r
+Global frequency set at 1000000000000 ticks per second
+warn: No dot file generated. Please install pydot to generate the dot file and pdf.
+warn: DRAM device capacity (0 Mbytes) does not match the address range assigned (512 Mbytes)
+warn: Sockets disabled, not accepting gdb connections
+Beginning simulation!
+info: Entering event queue @ 0.  Starting simulation...
+warn: readlink() called on '/proc/self/exe' may yield unexpected results in various settings.
+      Returning '/home/nanoproj/michael/spec2017/benchspec/CPU/500.perlbench_r/run/run_base_refrate_mytest-m64.0000/perlbench_r_base.mytest-m64'
+info: Increasing stack size by one page.
+warn: ignoring syscall access(...)
+warn: ignoring syscall rt_sigaction(...)
+      (further warnings will be suppressed)
+info: Increasing stack size by one page.
+info: Increasing stack size by one page.
+6651455000: system.dynamic_cache: Dumping Stats
+
+info: Increasing stack size by one page.
+14220533000: system.dynamic_cache: Dumping Stats
+
+21618096000: system.dynamic_cache: Dumping Stats
+
+27784955000: system.dynamic_cache: Dumping Stats
+
+33901875000: system.dynamic_cache: Dumping Stats
+
+40839993000: system.dynamic_cache: Dumping Stats
+
+Exiting @ tick 47918718000 because a thread reached the max instruction count
+./run_all.sh: line 62: [: missing `]'
+Found Benchmark: 502.gcc_r
+
+warn: CheckedInt already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: Enum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: ScopedEnum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 version 20.0.0.2
+gem5 compiled Nov 29 2020 20:59:58
+gem5 started Nov 29 2020 21:29:46
+gem5 executing on nanocad-server-testbed, pid 139650
+command line: /home/nanoproj/michael/gem5/build/X86/gem5.opt --outdir=/home/nanoproj/michael/gem5/src/DynamicCacheCtrl/RESULTS/perlbench_r/gcc_r --debug-flags=DynamicCacheCtrl /home/nanoproj/michael/gem5/src/DynamicCacheCtrl/no_dc_config.py -b 502.gcc_r -i 7000000 -l 64kB
+
+info: Standard input is not a terminal, disabling listeners.
+Selected SPEC_CPU2017 Benchmark
+--> 502.gcc_r
+Global frequency set at 1000000000000 ticks per second
+warn: No dot file generated. Please install pydot to generate the dot file and pdf.
+warn: DRAM device capacity (0 Mbytes) does not match the address range assigned (512 Mbytes)
+warn: Sockets disabled, not accepting gdb connections
+Beginning simulation!
+info: Entering event queue @ 0.  Starting simulation...
+warn: readlink() called on '/proc/self/exe' may yield unexpected results in various settings.
+      Returning '/home/nanoproj/michael/spec2017/benchspec/CPU/502.gcc_r/run/run_base_refrate_mytest-m64.0000/cpugcc_r_base.mytest-m64'
+info: Increasing stack size by one page.
+warn: ignoring syscall access(...)
+warn: ignoring syscall rt_sigaction(...)
+      (further warnings will be suppressed)
+warn: getrlimit: unimplemented resource 9
+warn: getrlimit: unimplemented resource 9
+warn: getrlimit: unimplemented resource 5
+warn: getrlimit: unimplemented resource 9
+4298227000: system.dynamic_cache: Dumping Stats
+
+8873786000: system.dynamic_cache: Dumping Stats
+
+14651845000: system.dynamic_cache: Dumping Stats
+
+20585102000: system.dynamic_cache: Dumping Stats
+
+25970005000: system.dynamic_cache: Dumping Stats
+
+30629493000: system.dynamic_cache: Dumping Stats
+
+Exiting @ tick 35298764000 because a thread reached the max instruction count
+./run_all.sh: line 62: [: missing `]'
+Found Benchmark: 503.bwaves_r
+
+warn: CheckedInt already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: Enum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: ScopedEnum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 version 20.0.0.2
+gem5 compiled Nov 29 2020 20:59:58
+gem5 started Nov 29 2020 21:30:02
+gem5 executing on nanocad-server-testbed, pid 139754
+command line: /home/nanoproj/michael/gem5/build/X86/gem5.opt --outdir=/home/nanoproj/michael/gem5/src/DynamicCacheCtrl/RESULTS/perlbench_r/gcc_r/bwaves_r --debug-flags=DynamicCacheCtrl /home/nanoproj/michael/gem5/src/DynamicCacheCtrl/no_dc_config.py -b 503.bwaves_r -i 7000000 -l 64kB
+
+info: Standard input is not a terminal, disabling listeners.
+Selected SPEC_CPU2017 Benchmark
+--> 503.bwaves_r
+Global frequency set at 1000000000000 ticks per second
+warn: No dot file generated. Please install pydot to generate the dot file and pdf.
+warn: DRAM device capacity (0 Mbytes) does not match the address range assigned (512 Mbytes)
+warn: Sockets disabled, not accepting gdb connections
+Beginning simulation!
+info: Entering event queue @ 0.  Starting simulation...
+warn: readlink() called on '/proc/self/exe' may yield unexpected results in various settings.
+      Returning '/home/nanoproj/michael/spec2017/benchspec/CPU/503.bwaves_r/run/run_base_refrate_mytest-m64.0000/bwaves_r_base.mytest-m64'
+info: Increasing stack size by one page.
+warn: ignoring syscall access(...)
+warn: instruction 'fwait' unimplemented
+warn: instruction 'fnclex' unimplemented
+warn: ignoring syscall rt_sigaction(...)
+      (further warnings will be suppressed)
+ BI-CGSTAB & symmetric difference scheme 
+ 3D  Laminar shock wave propagation
+At line 24 of file flow_lam.fppized.f (unit = 5, file = 'stdin')
+Fortran runtime error: End of file
+Exiting @ tick 216936000 because exiting with last active thread context
+./run_all.sh: line 62: [: missing `]'
+Found Benchmark: 505.mcf_r
+
+warn: CheckedInt already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: Enum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: ScopedEnum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 version 20.0.0.2
+gem5 compiled Nov 29 2020 20:59:58
+gem5 started Nov 29 2020 21:30:03
+gem5 executing on nanocad-server-testbed, pid 139765
+command line: /home/nanoproj/michael/gem5/build/X86/gem5.opt --outdir=/home/nanoproj/michael/gem5/src/DynamicCacheCtrl/RESULTS/perlbench_r/gcc_r/bwaves_r/mcf_r --debug-flags=DynamicCacheCtrl /home/nanoproj/michael/gem5/src/DynamicCacheCtrl/no_dc_config.py -b 505.mcf_r -i 7000000 -l 64kB
+
+info: Standard input is not a terminal, disabling listeners.
+Selected SPEC_CPU2017 Benchmark
+--> 505.mcf_r
+Global frequency set at 1000000000000 ticks per second
+warn: No dot file generated. Please install pydot to generate the dot file and pdf.
+warn: DRAM device capacity (0 Mbytes) does not match the address range assigned (512 Mbytes)
+warn: Sockets disabled, not accepting gdb connections
+Beginning simulation!
+info: Entering event queue @ 0.  Starting simulation...
+warn: readlink() called on '/proc/self/exe' may yield unexpected results in various settings.
+      Returning '/home/nanoproj/michael/spec2017/benchspec/CPU/505.mcf_r/run/run_base_refrate_mytest-m64.0000/mcf_r_base.mytest-m64'
+info: Increasing stack size by one page.
+warn: ignoring syscall access(...)
+
+MCF SPEC CPU version 1.11
+Copyright (c) 1998-2000 Zuse Institut Berlin (ZIB)
+Copyright (c) 2000-2002 Andreas Loebel & ZIB
+Copyright (c) 2003-2005 Andreas Loebel
+Copyright (c) 2006-2010 Dres. Loebel, Borndoerfer & Weider GbR (LBW)
+
+4684198000: system.dynamic_cache: Dumping Stats
+
+9313988000: system.dynamic_cache: Dumping Stats
+
+13931016000: system.dynamic_cache: Dumping Stats
+
+18563398000: system.dynamic_cache: Dumping Stats
+
+23214276000: system.dynamic_cache: Dumping Stats
+
+27845730000: system.dynamic_cache: Dumping Stats
+
+Exiting @ tick 32468207000 because a thread reached the max instruction count
+./run_all.sh: line 62: [: missing `]'
+Found Benchmark: 507.cactuBSSN_r
+
+warn: CheckedInt already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: Enum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: ScopedEnum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 version 20.0.0.2
+gem5 compiled Nov 29 2020 20:59:58
+gem5 started Nov 29 2020 21:30:17
+gem5 executing on nanocad-server-testbed, pid 139825
+command line: /home/nanoproj/michael/gem5/build/X86/gem5.opt --outdir=/home/nanoproj/michael/gem5/src/DynamicCacheCtrl/RESULTS/perlbench_r/gcc_r/bwaves_r/mcf_r/cactuBSSN_r --debug-flags=DynamicCacheCtrl /home/nanoproj/michael/gem5/src/DynamicCacheCtrl/no_dc_config.py -b 507.cactuBSSN_r -i 7000000 -l 64kB
+
+info: Standard input is not a terminal, disabling listeners.
+Selected SPEC_CPU2017 Benchmark
+--> 507.cactuBSSN_r
+Global frequency set at 1000000000000 ticks per second
+warn: No dot file generated. Please install pydot to generate the dot file and pdf.
+warn: DRAM device capacity (0 Mbytes) does not match the address range assigned (512 Mbytes)
+warn: Sockets disabled, not accepting gdb connections
+Beginning simulation!
+info: Entering event queue @ 0.  Starting simulation...
+warn: readlink() called on '/proc/self/exe' may yield unexpected results in various settings.
+      Returning '/home/nanoproj/michael/spec2017/benchspec/CPU/507.cactuBSSN_r/run/run_base_refrate_mytest-m64.0000/cactusBSSN_r_base.mytest-m64'
+info: Increasing stack size by one page.
+warn: ignoring syscall access(...)
+4486503000: system.dynamic_cache: Dumping Stats
+
+9052432000: system.dynamic_cache: Dumping Stats
+
+13863694000: system.dynamic_cache: Dumping Stats
+
+18579353000: system.dynamic_cache: Dumping Stats
+
+23271982000: system.dynamic_cache: Dumping Stats
+
+28064461000: system.dynamic_cache: Dumping Stats
+
+Exiting @ tick 32783729000 because a thread reached the max instruction count
+./run_all.sh: line 62: [: missing `]'
+Found Benchmark: 508.namd_r
+
+warn: CheckedInt already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: Enum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: ScopedEnum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 version 20.0.0.2
+gem5 compiled Nov 29 2020 20:59:58
+gem5 started Nov 29 2020 21:30:31
+gem5 executing on nanocad-server-testbed, pid 139930
+command line: /home/nanoproj/michael/gem5/build/X86/gem5.opt --outdir=/home/nanoproj/michael/gem5/src/DynamicCacheCtrl/RESULTS/perlbench_r/gcc_r/bwaves_r/mcf_r/cactuBSSN_r/namd_r --debug-flags=DynamicCacheCtrl /home/nanoproj/michael/gem5/src/DynamicCacheCtrl/no_dc_config.py -b 508.namd_r -i 7000000 -l 64kB
+
+info: Standard input is not a terminal, disabling listeners.
+Selected SPEC_CPU2017 Benchmark
+--> 508.namd_r
+Global frequency set at 1000000000000 ticks per second
+warn: No dot file generated. Please install pydot to generate the dot file and pdf.
+warn: DRAM device capacity (0 Mbytes) does not match the address range assigned (512 Mbytes)
+warn: Sockets disabled, not accepting gdb connections
+Beginning simulation!
+info: Entering event queue @ 0.  Starting simulation...
+warn: readlink() called on '/proc/self/exe' may yield unexpected results in various settings.
+      Returning '/home/nanoproj/michael/spec2017/benchspec/CPU/508.namd_r/run/run_base_refrate_mytest-m64.0000/namd_r_base.mytest-m64'
+info: Increasing stack size by one page.
+warn: ignoring syscall access(...)
+unknown argument: 
+Usage: namd_r_base.mytest-m64 --input <file> [--output <file>] [--standard <file>] [--iterations <int>]
+Exiting @ tick 293243000 because exiting with last active thread context
+./run_all.sh: line 62: [: missing `]'
+Found Benchmark: 510.parest_r
+
+warn: CheckedInt already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: Enum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: ScopedEnum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 version 20.0.0.2
+gem5 compiled Nov 29 2020 20:59:58
+gem5 started Nov 29 2020 21:30:32
+gem5 executing on nanocad-server-testbed, pid 139942
+command line: /home/nanoproj/michael/gem5/build/X86/gem5.opt --outdir=/home/nanoproj/michael/gem5/src/DynamicCacheCtrl/RESULTS/perlbench_r/gcc_r/bwaves_r/mcf_r/cactuBSSN_r/namd_r/parest_r --debug-flags=DynamicCacheCtrl /home/nanoproj/michael/gem5/src/DynamicCacheCtrl/no_dc_config.py -b 510.parest_r -i 7000000 -l 64kB
+
+info: Standard input is not a terminal, disabling listeners.
+Selected SPEC_CPU2017 Benchmark
+--> 510.parest_r
+Global frequency set at 1000000000000 ticks per second
+warn: No dot file generated. Please install pydot to generate the dot file and pdf.
+warn: DRAM device capacity (0 Mbytes) does not match the address range assigned (512 Mbytes)
+warn: Sockets disabled, not accepting gdb connections
+Beginning simulation!
+info: Entering event queue @ 0.  Starting simulation...
+warn: readlink() called on '/proc/self/exe' may yield unexpected results in various settings.
+      Returning '/home/nanoproj/michael/spec2017/benchspec/CPU/510.parest_r/run/run_base_refrate_mytest-m64.0000/parest_r_base.mytest-m64'
+info: Increasing stack size by one page.
+warn: ignoring syscall access(...)
+3865229000: system.dynamic_cache: Dumping Stats
+
+8025250000: system.dynamic_cache: Dumping Stats
+
+12419434000: system.dynamic_cache: Dumping Stats
+
+master (0) [2]: Starting master...
+info: Increasing stack size by one page.
+info: Increasing stack size by one page.
+info: Increasing stack size by one page.
+17433183000: system.dynamic_cache: Dumping Stats
+
+22885059000: system.dynamic_cache: Dumping Stats
+
+28358788000: system.dynamic_cache: Dumping Stats
+
+Exiting @ tick 33795706000 because a thread reached the max instruction count
+./run_all.sh: line 62: [: missing `]'
+Found Benchmark: 511.povray_r
+
+warn: CheckedInt already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: Enum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: ScopedEnum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 version 20.0.0.2
+gem5 compiled Nov 29 2020 20:59:58
+gem5 started Nov 29 2020 21:30:53
+gem5 executing on nanocad-server-testbed, pid 140025
+command line: /home/nanoproj/michael/gem5/build/X86/gem5.opt --outdir=/home/nanoproj/michael/gem5/src/DynamicCacheCtrl/RESULTS/perlbench_r/gcc_r/bwaves_r/mcf_r/cactuBSSN_r/namd_r/parest_r/povray_r --debug-flags=DynamicCacheCtrl /home/nanoproj/michael/gem5/src/DynamicCacheCtrl/no_dc_config.py -b 511.povray_r -i 7000000 -l 64kB
+
+info: Standard input is not a terminal, disabling listeners.
+Selected SPEC_CPU2017 Benchmark
+--> 511.povray_r
+Global frequency set at 1000000000000 ticks per second
+warn: No dot file generated. Please install pydot to generate the dot file and pdf.
+warn: DRAM device capacity (0 Mbytes) does not match the address range assigned (512 Mbytes)
+warn: Sockets disabled, not accepting gdb connections
+Beginning simulation!
+info: Entering event queue @ 0.  Starting simulation...
+warn: readlink() called on '/proc/self/exe' may yield unexpected results in various settings.
+      Returning '/home/nanoproj/michael/spec2017/benchspec/CPU/511.povray_r/run/run_base_refrate_mytest-m64.0000/povray_r_base.mytest-m64'
+info: Increasing stack size by one page.
+warn: ignoring syscall access(...)
+info: Increasing stack size by one page.
+info: Increasing stack size by one page.
+info: Increasing stack size by one page.
+info: Increasing stack size by one page.
+info: Increasing stack size by one page.
+info: Increasing stack size by one page.
+4267436000: system.dynamic_cache: Dumping Stats
+
+8309103000: system.dynamic_cache: Dumping Stats
+
+13412759000: system.dynamic_cache: Dumping Stats
+
+18962488000: system.dynamic_cache: Dumping Stats
+
+24257196000: system.dynamic_cache: Dumping Stats
+
+29372254000: system.dynamic_cache: Dumping Stats
+
+Exiting @ tick 33000519000 because a thread reached the max instruction count
+./run_all.sh: line 62: [: missing `]'
+Found Benchmark: 519.lbm_r
+
+warn: CheckedInt already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: Enum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: ScopedEnum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 version 20.0.0.2
+gem5 compiled Nov 29 2020 20:59:58
+gem5 started Nov 29 2020 21:31:06
+gem5 executing on nanocad-server-testbed, pid 140124
+command line: /home/nanoproj/michael/gem5/build/X86/gem5.opt --outdir=/home/nanoproj/michael/gem5/src/DynamicCacheCtrl/RESULTS/perlbench_r/gcc_r/bwaves_r/mcf_r/cactuBSSN_r/namd_r/parest_r/povray_r/lbm_r --debug-flags=DynamicCacheCtrl /home/nanoproj/michael/gem5/src/DynamicCacheCtrl/no_dc_config.py -b 519.lbm_r -i 7000000 -l 64kB
+
+info: Standard input is not a terminal, disabling listeners.
+Selected SPEC_CPU2017 Benchmark
+--> 519.lbm_r
+Global frequency set at 1000000000000 ticks per second
+warn: No dot file generated. Please install pydot to generate the dot file and pdf.
+warn: DRAM device capacity (0 Mbytes) does not match the address range assigned (512 Mbytes)
+warn: Sockets disabled, not accepting gdb connections
+Beginning simulation!
+info: Entering event queue @ 0.  Starting simulation...
+warn: readlink() called on '/proc/self/exe' may yield unexpected results in various settings.
+      Returning '/home/nanoproj/michael/spec2017/benchspec/CPU/519.lbm_r/run/run_base_refrate_mytest-m64.0000/lbm_r_base.mytest-m64'
+info: Increasing stack size by one page.
+warn: ignoring syscall access(...)
+MAIN_printInfo:
+	grid size      : 100 x 100 x 130 = 1.30 * 10^6 Cells
+	nTimeSteps     : 3000
+	result file    : reference.dat
+	action         : nothing
+	simulation type: lid-driven cavity
+	obstacle file  : 100_100_130_ldc.of
+
+12571681000: system.dynamic_cache: Dumping Stats
+
+25257801000: system.dynamic_cache: Dumping Stats
+
+37944344000: system.dynamic_cache: Dumping Stats
+
+50631248000: system.dynamic_cache: Dumping Stats
+
+63318174000: system.dynamic_cache: Dumping Stats
+
+76004568000: system.dynamic_cache: Dumping Stats
+
+Exiting @ tick 88691707000 because a thread reached the max instruction count
+./run_all.sh: line 62: [: missing `]'
+Found Benchmark: 520.omnetpp_r
+
+warn: CheckedInt already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: Enum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: ScopedEnum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 version 20.0.0.2
+gem5 compiled Nov 29 2020 20:59:58
+gem5 started Nov 29 2020 21:31:28
+gem5 executing on nanocad-server-testbed, pid 140282
+command line: /home/nanoproj/michael/gem5/build/X86/gem5.opt --outdir=/home/nanoproj/michael/gem5/src/DynamicCacheCtrl/RESULTS/perlbench_r/gcc_r/bwaves_r/mcf_r/cactuBSSN_r/namd_r/parest_r/povray_r/lbm_r/omnetpp_r --debug-flags=DynamicCacheCtrl /home/nanoproj/michael/gem5/src/DynamicCacheCtrl/no_dc_config.py -b 520.omnetpp_r -i 7000000 -l 64kB
+
+info: Standard input is not a terminal, disabling listeners.
+Selected SPEC_CPU2017 Benchmark
+--> 520.omnetpp_r
+Global frequency set at 1000000000000 ticks per second
+warn: No dot file generated. Please install pydot to generate the dot file and pdf.
+warn: DRAM device capacity (0 Mbytes) does not match the address range assigned (512 Mbytes)
+warn: Sockets disabled, not accepting gdb connections
+Beginning simulation!
+info: Entering event queue @ 0.  Starting simulation...
+warn: readlink() called on '/proc/self/exe' may yield unexpected results in various settings.
+      Returning '/home/nanoproj/michael/spec2017/benchspec/CPU/520.omnetpp_r/run/run_base_refrate_mytest-m64.0000/omnetpp_r_base.mytest-m64'
+info: Increasing stack size by one page.
+warn: ignoring syscall access(...)
+OMNeT++ Discrete Event Simulation  (C) 1992-2008 Andras Varga, OpenSim Ltd.
+Version: 4.0, build: 090310-10709, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+See the license for distribution terms and warranty disclaimer
+4649874000: system.dynamic_cache: Dumping Stats
+
+9047720000: system.dynamic_cache: Dumping Stats
+
+12635193000: system.dynamic_cache: Dumping Stats
+
+16257846000: system.dynamic_cache: Dumping Stats
+
+19717127000: system.dynamic_cache: Dumping Stats
+
+23191943000: system.dynamic_cache: Dumping Stats
+
+Exiting @ tick 27047865000 because a thread reached the max instruction count
+./run_all.sh: line 62: [: missing `]'
+Found Benchmark: 557.xz_r
+
+warn: CheckedInt already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: Enum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: ScopedEnum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 version 20.0.0.2
+gem5 compiled Nov 29 2020 20:59:58
+gem5 started Nov 29 2020 21:31:40
+gem5 executing on nanocad-server-testbed, pid 140327
+command line: /home/nanoproj/michael/gem5/build/X86/gem5.opt --outdir=/home/nanoproj/michael/gem5/src/DynamicCacheCtrl/RESULTS/perlbench_r/gcc_r/bwaves_r/mcf_r/cactuBSSN_r/namd_r/parest_r/povray_r/lbm_r/omnetpp_r/xz_r --debug-flags=DynamicCacheCtrl /home/nanoproj/michael/gem5/src/DynamicCacheCtrl/no_dc_config.py -b 557.xz_r -i 7000000 -l 64kB
+
+info: Standard input is not a terminal, disabling listeners.
+Selected SPEC_CPU2017 Benchmark
+--> 557.xz_r
+Global frequency set at 1000000000000 ticks per second
+warn: No dot file generated. Please install pydot to generate the dot file and pdf.
+warn: DRAM device capacity (0 Mbytes) does not match the address range assigned (512 Mbytes)
+warn: Sockets disabled, not accepting gdb connections
+Beginning simulation!
+info: Entering event queue @ 0.  Starting simulation...
+warn: readlink() called on '/proc/self/exe' may yield unexpected results in various settings.
+      Returning '/home/nanoproj/michael/spec2017/benchspec/CPU/557.xz_r/run/run_base_refrate_mytest-m64.0000/xz_r_base.mytest-m64'
+info: Increasing stack size by one page.
+warn: ignoring syscall access(...)
+SPEC CPU XZ driver: input=cld.tar.xz insize=160
+17592425000: system.dynamic_cache: Dumping Stats
+
+35283821000: system.dynamic_cache: Dumping Stats
+
+Loading Input Data
+info: Increasing stack size by one page.
+info: Increasing stack size by one page.
+info: Increasing stack size by one page.
+47457716000: system.dynamic_cache: Dumping Stats
+
+50726728000: system.dynamic_cache: Dumping Stats
+
+53983146000: system.dynamic_cache: Dumping Stats
+
+57359311000: system.dynamic_cache: Dumping Stats
+
+Exiting @ tick 60693806000 because a thread reached the max instruction count
+./run_all.sh: line 62: [: missing `]'
+Found Benchmark: 600.perlbench_s
+
+warn: CheckedInt already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: Enum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: ScopedEnum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 version 20.0.0.2
+gem5 compiled Nov 29 2020 20:59:58
+gem5 started Nov 29 2020 21:32:00
+gem5 executing on nanocad-server-testbed, pid 140450
+command line: /home/nanoproj/michael/gem5/build/X86/gem5.opt --outdir=/home/nanoproj/michael/gem5/src/DynamicCacheCtrl/RESULTS/perlbench_r/gcc_r/bwaves_r/mcf_r/cactuBSSN_r/namd_r/parest_r/povray_r/lbm_r/omnetpp_r/xz_r/perlbench_s --debug-flags=DynamicCacheCtrl /home/nanoproj/michael/gem5/src/DynamicCacheCtrl/no_dc_config.py -b 600.perlbench_s -i 7000000 -l 64kB
+
+info: Standard input is not a terminal, disabling listeners.
+Selected SPEC_CPU2017 Benchmark
+--> 600.perlbench_s
+Global frequency set at 1000000000000 ticks per second
+warn: No dot file generated. Please install pydot to generate the dot file and pdf.
+warn: DRAM device capacity (0 Mbytes) does not match the address range assigned (512 Mbytes)
+warn: Sockets disabled, not accepting gdb connections
+Beginning simulation!
+info: Entering event queue @ 0.  Starting simulation...
+warn: readlink() called on '/proc/self/exe' may yield unexpected results in various settings.
+      Returning '/home/nanoproj/michael/spec2017/benchspec/CPU/600.perlbench_s/run/run_base_refspeed_mytest-m64.0000/perlbench_s_base.mytest-m64'
+info: Increasing stack size by one page.
+warn: ignoring syscall access(...)
+warn: ignoring syscall rt_sigaction(...)
+      (further warnings will be suppressed)
+info: Increasing stack size by one page.
+info: Increasing stack size by one page.
+6789632000: system.dynamic_cache: Dumping Stats
+
+info: Increasing stack size by one page.
+14278701000: system.dynamic_cache: Dumping Stats
+
+21639366000: system.dynamic_cache: Dumping Stats
+
+27920713000: system.dynamic_cache: Dumping Stats
+
+34126400000: system.dynamic_cache: Dumping Stats
+
+41090582000: system.dynamic_cache: Dumping Stats
+
+Exiting @ tick 48142443000 because a thread reached the max instruction count
+./run_all.sh: line 62: [: missing `]'
+Found Benchmark: 602.gcc_s
+
+warn: CheckedInt already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: Enum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: ScopedEnum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 version 20.0.0.2
+gem5 compiled Nov 29 2020 20:59:58
+gem5 started Nov 29 2020 21:32:16
+gem5 executing on nanocad-server-testbed, pid 140526
+command line: /home/nanoproj/michael/gem5/build/X86/gem5.opt --outdir=/home/nanoproj/michael/gem5/src/DynamicCacheCtrl/RESULTS/perlbench_r/gcc_r/bwaves_r/mcf_r/cactuBSSN_r/namd_r/parest_r/povray_r/lbm_r/omnetpp_r/xz_r/perlbench_s/gcc_s --debug-flags=DynamicCacheCtrl /home/nanoproj/michael/gem5/src/DynamicCacheCtrl/no_dc_config.py -b 602.gcc_s -i 7000000 -l 64kB
+
+info: Standard input is not a terminal, disabling listeners.
+Selected SPEC_CPU2017 Benchmark
+--> 602.gcc_s
+Global frequency set at 1000000000000 ticks per second
+warn: No dot file generated. Please install pydot to generate the dot file and pdf.
+warn: DRAM device capacity (0 Mbytes) does not match the address range assigned (512 Mbytes)
+warn: Sockets disabled, not accepting gdb connections
+Beginning simulation!
+info: Entering event queue @ 0.  Starting simulation...
+warn: readlink() called on '/proc/self/exe' may yield unexpected results in various settings.
+      Returning '/home/nanoproj/michael/spec2017/benchspec/CPU/602.gcc_s/run/run_base_refspeed_mytest-m64.0000/sgcc_base.mytest-m64'
+info: Increasing stack size by one page.
+warn: ignoring syscall access(...)
+warn: ignoring syscall rt_sigaction(...)
+      (further warnings will be suppressed)
+warn: getrlimit: unimplemented resource 9
+warn: getrlimit: unimplemented resource 9
+warn: getrlimit: unimplemented resource 5
+warn: getrlimit: unimplemented resource 9
+4084583000: system.dynamic_cache: Dumping Stats
+
+8812172000: system.dynamic_cache: Dumping Stats
+
+14668290000: system.dynamic_cache: Dumping Stats
+
+20370776000: system.dynamic_cache: Dumping Stats
+
+25685267000: system.dynamic_cache: Dumping Stats
+
+30556963000: system.dynamic_cache: Dumping Stats
+
+Exiting @ tick 35687864000 because a thread reached the max instruction count
+./run_all.sh: line 62: [: missing `]'
+Found Benchmark: 603.bwaves_s
+
+warn: CheckedInt already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: Enum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: ScopedEnum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 version 20.0.0.2
+gem5 compiled Nov 29 2020 20:59:58
+gem5 started Nov 29 2020 21:32:29
+gem5 executing on nanocad-server-testbed, pid 140655
+command line: /home/nanoproj/michael/gem5/build/X86/gem5.opt --outdir=/home/nanoproj/michael/gem5/src/DynamicCacheCtrl/RESULTS/perlbench_r/gcc_r/bwaves_r/mcf_r/cactuBSSN_r/namd_r/parest_r/povray_r/lbm_r/omnetpp_r/xz_r/perlbench_s/gcc_s/bwaves_s --debug-flags=DynamicCacheCtrl /home/nanoproj/michael/gem5/src/DynamicCacheCtrl/no_dc_config.py -b 603.bwaves_s -i 7000000 -l 64kB
+
+info: Standard input is not a terminal, disabling listeners.
+Selected SPEC_CPU2017 Benchmark
+--> 603.bwaves_s
+Global frequency set at 1000000000000 ticks per second
+warn: No dot file generated. Please install pydot to generate the dot file and pdf.
+warn: DRAM device capacity (0 Mbytes) does not match the address range assigned (512 Mbytes)
+warn: Sockets disabled, not accepting gdb connections
+Beginning simulation!
+info: Entering event queue @ 0.  Starting simulation...
+warn: ignoring syscall set_robust_list(...)
+warn: ignoring syscall rt_sigaction(...)
+      (further warnings will be suppressed)
+warn: ignoring syscall rt_sigprocmask(...)
+      (further warnings will be suppressed)
+warn: readlink() called on '/proc/self/exe' may yield unexpected results in various settings.
+      Returning '/home/nanoproj/michael/spec2017/benchspec/CPU/603.bwaves_s/run/run_base_refspeed_mytest-m64.0000/speed_bwaves_base.mytest-m64'
+info: Increasing stack size by one page.
+warn: ignoring syscall access(...)
+warn: instruction 'fwait' unimplemented
+warn: instruction 'fnclex' unimplemented
+warn: ignoring syscall sched_getaffinity(...)
+info: Increasing stack size by one page.
+ BI-CGSTAB & symmetric difference scheme 
+ 3D  Laminar shock wave propagation
+At line 24 of file flow_lam.fppized.f (unit = 5, file = 'stdin')
+Fortran runtime error: End of file
+panic: Tried to execute unmapped address 0.
+PC: 0, Instr:   CALL_NEAR_I : wrip   , t7, t1
+Memory Usage: 1176344 KBytes
+Program aborted at tick 314974000
+--- BEGIN LIBC BACKTRACE ---
+/home/nanoproj/michael/gem5/build/X86/gem5.opt(_Z15print_backtracev+0x28)[0x18076f8]
+/home/nanoproj/michael/gem5/build/X86/gem5.opt(_Z12abortHandleri+0x46)[0x18186b6]
+/lib/x86_64-linux-gnu/libpthread.so.0(+0x11390)[0x7f23fb759390]
+/lib/x86_64-linux-gnu/libc.so.6(gsignal+0x38)[0x7f23f9adc438]
+/lib/x86_64-linux-gnu/libc.so.6(abort+0x16a)[0x7f23f9ade03a]
+/home/nanoproj/michael/gem5/build/X86/gem5.opt[0x8417bf]
+/home/nanoproj/michael/gem5/build/X86/gem5.opt(_ZN6X86ISA9PageFault6invokeEP13ThreadContextRK14RefCountingPtrI10StaticInstE+0x541)[0xe04e31]
+/home/nanoproj/michael/gem5/build/X86/gem5.opt(_ZN13BaseSimpleCPU9advancePCERKSt10shared_ptrI9FaultBaseE+0xfe)[0x139ccde]
+/home/nanoproj/michael/gem5/build/X86/gem5.opt(_ZN15TimingSimpleCPU11advanceInstERKSt10shared_ptrI9FaultBaseE+0xec)[0x1398afc]
+/home/nanoproj/michael/gem5/build/X86/gem5.opt(_ZN15TimingSimpleCPU9sendFetchERKSt10shared_ptrI9FaultBaseERKS0_I7RequestEP13ThreadContext+0x121)[0x1398f91]
+/home/nanoproj/michael/gem5/build/X86/gem5.opt(_ZN6X86ISA3TLB15translateTimingERKSt10shared_ptrI7RequestEP13ThreadContextPN7BaseTLB11TranslationENS8_4ModeE+0xa4)[0xe32bc4]
+/home/nanoproj/michael/gem5/build/X86/gem5.opt(_ZN15TimingSimpleCPU5fetchEv+0x450)[0x13988d0]
+/home/nanoproj/michael/gem5/build/X86/gem5.opt(_ZN15TimingSimpleCPU11advanceInstERKSt10shared_ptrI9FaultBaseE+0x326)[0x1398d36]
+/home/nanoproj/michael/gem5/build/X86/gem5.opt(_ZN15TimingSimpleCPU14completeIfetchEP6Packet+0x20b)[0x13981eb]
+/home/nanoproj/michael/gem5/build/X86/gem5.opt(_ZN15TimingSimpleCPU5fetchEv+0x129)[0x13985a9]
+/home/nanoproj/michael/gem5/build/X86/gem5.opt(_ZN15TimingSimpleCPU11advanceInstERKSt10shared_ptrI9FaultBaseE+0x326)[0x1398d36]
+/home/nanoproj/michael/gem5/build/X86/gem5.opt(_ZN15TimingSimpleCPU14completeIfetchEP6Packet+0x20b)[0x13981eb]
+/home/nanoproj/michael/gem5/build/X86/gem5.opt(_ZN15TimingSimpleCPU5fetchEv+0x129)[0x13985a9]
+/home/nanoproj/michael/gem5/build/X86/gem5.opt(_ZN15TimingSimpleCPU11advanceInstERKSt10shared_ptrI9FaultBaseE+0x326)[0x1398d36]
+/home/nanoproj/michael/gem5/build/X86/gem5.opt(_ZN15TimingSimpleCPU18completeDataAccessEP6Packet+0x288)[0x13996a8]
+/home/nanoproj/michael/gem5/build/X86/gem5.opt(_ZN10EventQueue10serviceOneEv+0x135)[0x180f375]
+/home/nanoproj/michael/gem5/build/X86/gem5.opt(_Z9doSimLoopP10EventQueue+0x48)[0x18309f8]
+/home/nanoproj/michael/gem5/build/X86/gem5.opt(_Z8simulatem+0xd03)[0x1831ab3]
+/home/nanoproj/michael/gem5/build/X86/gem5.opt[0x18e9e2d]
+/home/nanoproj/michael/gem5/build/X86/gem5.opt[0xa588b8]
+/usr/lib/x86_64-linux-gnu/libpython2.7.so.1.0(PyEval_EvalFrameEx+0x7852)[0x7f23fba167b2]
+/usr/lib/x86_64-linux-gnu/libpython2.7.so.1.0(PyEval_EvalCodeEx+0x85c)[0x7f23fbb4d11c]
+/usr/lib/x86_64-linux-gnu/libpython2.7.so.1.0(PyEval_EvalFrameEx+0x6ffd)[0x7f23fba15f5d]
+/usr/lib/x86_64-linux-gnu/libpython2.7.so.1.0(PyEval_EvalCodeEx+0x85c)[0x7f23fbb4d11c]
+/usr/lib/x86_64-linux-gnu/libpython2.7.so.1.0(PyEval_EvalCode+0x19)[0x7f23fba0ede9]
+/usr/lib/x86_64-linux-gnu/libpython2.7.so.1.0(PyEval_EvalFrameEx+0x613b)[0x7f23fba1509b]
+/usr/lib/x86_64-linux-gnu/libpython2.7.so.1.0(PyEval_EvalCodeEx+0x85c)[0x7f23fbb4d11c]
+--- END LIBC BACKTRACE ---
+./run_all.sh: line 56: 140655 Aborted                 (core dumped) ${GEM5OPT} --outdir=${OUTDIR} --debug-flags=DynamicCacheCtrl ${SPEC17CFG} -b ${ACTUALBENCHNAME} -i ${MAXINST} -l ${SIZE}
+./run_all.sh: line 62: [: missing `]'
+Found Benchmark: spec2017
+
+./run_all.sh: line 79: cd: ./run/run*: No such file or directory
+Error: Benchmark spec2017 has not been built yet
+./run_all.sh: line 62: [: missing `]'
+Found Benchmark: 500.perlbench_r
+
+warn: CheckedInt already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: Enum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: ScopedEnum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 version 20.0.0.2
+gem5 compiled Nov 29 2020 20:59:58
+gem5 started Nov 29 2020 21:33:27
+gem5 executing on nanocad-server-testbed, pid 140930
+command line: /home/nanoproj/michael/gem5/build/X86/gem5.opt --outdir=/home/nanoproj/michael/gem5/src/DynamicCacheCtrl/perlbench_r/64kB --debug-flags=DynamicCacheCtrl /home/nanoproj/michael/gem5/src/DynamicCacheCtrl/no_dc_config.py -b 500.perlbench_r -i 7000000 -l 64kB
+
+info: Standard input is not a terminal, disabling listeners.
+Selected SPEC_CPU2017 Benchmark
+--> 500.perlbench_r
+Global frequency set at 1000000000000 ticks per second
+warn: No dot file generated. Please install pydot to generate the dot file and pdf.
+warn: DRAM device capacity (0 Mbytes) does not match the address range assigned (512 Mbytes)
+warn: Sockets disabled, not accepting gdb connections
+Beginning simulation!
+info: Entering event queue @ 0.  Starting simulation...
+warn: readlink() called on '/proc/self/exe' may yield unexpected results in various settings.
+      Returning '/home/nanoproj/michael/spec2017/benchspec/CPU/500.perlbench_r/run/run_base_refrate_mytest-m64.0000/perlbench_r_base.mytest-m64'
+info: Increasing stack size by one page.
+warn: ignoring syscall access(...)
+warn: ignoring syscall rt_sigaction(...)
+      (further warnings will be suppressed)
+info: Increasing stack size by one page.
+info: Increasing stack size by one page.
+6651455000: system.dynamic_cache: Dumping Stats
+
+info: Increasing stack size by one page.
+14220533000: system.dynamic_cache: Dumping Stats
+
+21618096000: system.dynamic_cache: Dumping Stats
+
+27784955000: system.dynamic_cache: Dumping Stats
+
+33901875000: system.dynamic_cache: Dumping Stats
+
+40839993000: system.dynamic_cache: Dumping Stats
+
+Exiting @ tick 47918718000 because a thread reached the max instruction count
+./run_all.sh: line 62: [: missing `]'
+Found Benchmark: 502.gcc_r
+
+warn: CheckedInt already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: Enum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: ScopedEnum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 version 20.0.0.2
+gem5 compiled Nov 29 2020 20:59:58
+gem5 started Nov 29 2020 21:33:42
+gem5 executing on nanocad-server-testbed, pid 141098
+command line: /home/nanoproj/michael/gem5/build/X86/gem5.opt --outdir=/home/nanoproj/michael/gem5/src/DynamicCacheCtrl/perlbench_r/gcc_r/64kB --debug-flags=DynamicCacheCtrl /home/nanoproj/michael/gem5/src/DynamicCacheCtrl/no_dc_config.py -b 502.gcc_r -i 7000000 -l 64kB
+
+info: Standard input is not a terminal, disabling listeners.
+Selected SPEC_CPU2017 Benchmark
+--> 502.gcc_r
+Global frequency set at 1000000000000 ticks per second
+warn: No dot file generated. Please install pydot to generate the dot file and pdf.
+warn: DRAM device capacity (0 Mbytes) does not match the address range assigned (512 Mbytes)
+warn: Sockets disabled, not accepting gdb connections
+Beginning simulation!
+info: Entering event queue @ 0.  Starting simulation...
+warn: readlink() called on '/proc/self/exe' may yield unexpected results in various settings.
+      Returning '/home/nanoproj/michael/spec2017/benchspec/CPU/502.gcc_r/run/run_base_refrate_mytest-m64.0000/cpugcc_r_base.mytest-m64'
+info: Increasing stack size by one page.
+warn: ignoring syscall access(...)
+warn: ignoring syscall rt_sigaction(...)
+      (further warnings will be suppressed)
+warn: getrlimit: unimplemented resource 9
+warn: getrlimit: unimplemented resource 9
+warn: getrlimit: unimplemented resource 5
+warn: getrlimit: unimplemented resource 9
+4298227000: system.dynamic_cache: Dumping Stats
+
+8873786000: system.dynamic_cache: Dumping Stats
+
+14651845000: system.dynamic_cache: Dumping Stats
+
+20585102000: system.dynamic_cache: Dumping Stats
+
+25970005000: system.dynamic_cache: Dumping Stats
+
+30629493000: system.dynamic_cache: Dumping Stats
+
+Exiting @ tick 35298764000 because a thread reached the max instruction count
+./run_all.sh: line 62: [: missing `]'
+Found Benchmark: 503.bwaves_r
+
+warn: CheckedInt already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: Enum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: ScopedEnum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 version 20.0.0.2
+gem5 compiled Nov 29 2020 20:59:58
+gem5 started Nov 29 2020 21:33:58
+gem5 executing on nanocad-server-testbed, pid 141158
+command line: /home/nanoproj/michael/gem5/build/X86/gem5.opt --outdir=/home/nanoproj/michael/gem5/src/DynamicCacheCtrl/perlbench_r/gcc_r/bwaves_r/64kB --debug-flags=DynamicCacheCtrl /home/nanoproj/michael/gem5/src/DynamicCacheCtrl/no_dc_config.py -b 503.bwaves_r -i 7000000 -l 64kB
+
+info: Standard input is not a terminal, disabling listeners.
+Selected SPEC_CPU2017 Benchmark
+--> 503.bwaves_r
+Global frequency set at 1000000000000 ticks per second
+warn: No dot file generated. Please install pydot to generate the dot file and pdf.
+warn: DRAM device capacity (0 Mbytes) does not match the address range assigned (512 Mbytes)
+warn: Sockets disabled, not accepting gdb connections
+Beginning simulation!
+info: Entering event queue @ 0.  Starting simulation...
+warn: readlink() called on '/proc/self/exe' may yield unexpected results in various settings.
+      Returning '/home/nanoproj/michael/spec2017/benchspec/CPU/503.bwaves_r/run/run_base_refrate_mytest-m64.0000/bwaves_r_base.mytest-m64'
+info: Increasing stack size by one page.
+warn: ignoring syscall access(...)
+warn: instruction 'fwait' unimplemented
+warn: instruction 'fnclex' unimplemented
+warn: ignoring syscall rt_sigaction(...)
+      (further warnings will be suppressed)
+ BI-CGSTAB & symmetric difference scheme 
+ 3D  Laminar shock wave propagation
+At line 24 of file flow_lam.fppized.f (unit = 5, file = 'stdin')
+Fortran runtime error: End of file
+Exiting @ tick 216936000 because exiting with last active thread context
+./run_all.sh: line 62: [: missing `]'
+Found Benchmark: 505.mcf_r
+
+warn: CheckedInt already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: Enum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: ScopedEnum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 version 20.0.0.2
+gem5 compiled Nov 29 2020 20:59:58
+gem5 started Nov 29 2020 21:33:59
+gem5 executing on nanocad-server-testbed, pid 141212
+command line: /home/nanoproj/michael/gem5/build/X86/gem5.opt --outdir=/home/nanoproj/michael/gem5/src/DynamicCacheCtrl/perlbench_r/gcc_r/bwaves_r/mcf_r/64kB --debug-flags=DynamicCacheCtrl /home/nanoproj/michael/gem5/src/DynamicCacheCtrl/no_dc_config.py -b 505.mcf_r -i 7000000 -l 64kB
+
+info: Standard input is not a terminal, disabling listeners.
+Selected SPEC_CPU2017 Benchmark
+--> 505.mcf_r
+Global frequency set at 1000000000000 ticks per second
+warn: No dot file generated. Please install pydot to generate the dot file and pdf.
+warn: DRAM device capacity (0 Mbytes) does not match the address range assigned (512 Mbytes)
+warn: Sockets disabled, not accepting gdb connections
+Beginning simulation!
+info: Entering event queue @ 0.  Starting simulation...
+warn: readlink() called on '/proc/self/exe' may yield unexpected results in various settings.
+      Returning '/home/nanoproj/michael/spec2017/benchspec/CPU/505.mcf_r/run/run_base_refrate_mytest-m64.0000/mcf_r_base.mytest-m64'
+info: Increasing stack size by one page.
+warn: ignoring syscall access(...)
+
+MCF SPEC CPU version 1.11
+Copyright (c) 1998-2000 Zuse Institut Berlin (ZIB)
+Copyright (c) 2000-2002 Andreas Loebel & ZIB
+Copyright (c) 2003-2005 Andreas Loebel
+Copyright (c) 2006-2010 Dres. Loebel, Borndoerfer & Weider GbR (LBW)
+
+4684198000: system.dynamic_cache: Dumping Stats
+
+9313988000: system.dynamic_cache: Dumping Stats
+
+13931016000: system.dynamic_cache: Dumping Stats
+
+18563398000: system.dynamic_cache: Dumping Stats
+
+23214276000: system.dynamic_cache: Dumping Stats
+
+27845730000: system.dynamic_cache: Dumping Stats
+
+Exiting @ tick 32468207000 because a thread reached the max instruction count
+./run_all.sh: line 62: [: missing `]'
+Found Benchmark: 507.cactuBSSN_r
+
+warn: CheckedInt already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: Enum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: ScopedEnum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 version 20.0.0.2
+gem5 compiled Nov 29 2020 20:59:58
+gem5 started Nov 29 2020 21:34:13
+gem5 executing on nanocad-server-testbed, pid 141270
+command line: /home/nanoproj/michael/gem5/build/X86/gem5.opt --outdir=/home/nanoproj/michael/gem5/src/DynamicCacheCtrl/perlbench_r/gcc_r/bwaves_r/mcf_r/cactuBSSN_r/64kB --debug-flags=DynamicCacheCtrl /home/nanoproj/michael/gem5/src/DynamicCacheCtrl/no_dc_config.py -b 507.cactuBSSN_r -i 7000000 -l 64kB
+
+info: Standard input is not a terminal, disabling listeners.
+Selected SPEC_CPU2017 Benchmark
+--> 507.cactuBSSN_r
+Global frequency set at 1000000000000 ticks per second
+warn: No dot file generated. Please install pydot to generate the dot file and pdf.
+warn: DRAM device capacity (0 Mbytes) does not match the address range assigned (512 Mbytes)
+warn: Sockets disabled, not accepting gdb connections
+Beginning simulation!
+info: Entering event queue @ 0.  Starting simulation...
+warn: readlink() called on '/proc/self/exe' may yield unexpected results in various settings.
+      Returning '/home/nanoproj/michael/spec2017/benchspec/CPU/507.cactuBSSN_r/run/run_base_refrate_mytest-m64.0000/cactusBSSN_r_base.mytest-m64'
+info: Increasing stack size by one page.
+warn: ignoring syscall access(...)
+4486503000: system.dynamic_cache: Dumping Stats
+
+9052432000: system.dynamic_cache: Dumping Stats
+
+13863694000: system.dynamic_cache: Dumping Stats
+
+18579353000: system.dynamic_cache: Dumping Stats
+
+23271982000: system.dynamic_cache: Dumping Stats
+
+28064461000: system.dynamic_cache: Dumping Stats
+
+Exiting @ tick 32783729000 because a thread reached the max instruction count
+./run_all.sh: line 62: [: missing `]'
+Found Benchmark: 508.namd_r
+
+warn: CheckedInt already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: Enum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: ScopedEnum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 version 20.0.0.2
+gem5 compiled Nov 29 2020 20:59:58
+gem5 started Nov 29 2020 21:34:27
+gem5 executing on nanocad-server-testbed, pid 141338
+command line: /home/nanoproj/michael/gem5/build/X86/gem5.opt --outdir=/home/nanoproj/michael/gem5/src/DynamicCacheCtrl/perlbench_r/gcc_r/bwaves_r/mcf_r/cactuBSSN_r/namd_r/64kB --debug-flags=DynamicCacheCtrl /home/nanoproj/michael/gem5/src/DynamicCacheCtrl/no_dc_config.py -b 508.namd_r -i 7000000 -l 64kB
+
+info: Standard input is not a terminal, disabling listeners.
+Selected SPEC_CPU2017 Benchmark
+--> 508.namd_r
+Global frequency set at 1000000000000 ticks per second
+warn: No dot file generated. Please install pydot to generate the dot file and pdf.
+warn: DRAM device capacity (0 Mbytes) does not match the address range assigned (512 Mbytes)
+warn: Sockets disabled, not accepting gdb connections
+Beginning simulation!
+info: Entering event queue @ 0.  Starting simulation...
+warn: readlink() called on '/proc/self/exe' may yield unexpected results in various settings.
+      Returning '/home/nanoproj/michael/spec2017/benchspec/CPU/508.namd_r/run/run_base_refrate_mytest-m64.0000/namd_r_base.mytest-m64'
+info: Increasing stack size by one page.
+warn: ignoring syscall access(...)
+unknown argument: 
+Usage: namd_r_base.mytest-m64 --input <file> [--output <file>] [--standard <file>] [--iterations <int>]
+Exiting @ tick 293243000 because exiting with last active thread context
+./run_all.sh: line 62: [: missing `]'
+Found Benchmark: 510.parest_r
+
+warn: CheckedInt already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: Enum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: ScopedEnum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 version 20.0.0.2
+gem5 compiled Nov 29 2020 20:59:58
+gem5 started Nov 29 2020 21:34:28
+gem5 executing on nanocad-server-testbed, pid 141360
+command line: /home/nanoproj/michael/gem5/build/X86/gem5.opt --outdir=/home/nanoproj/michael/gem5/src/DynamicCacheCtrl/perlbench_r/gcc_r/bwaves_r/mcf_r/cactuBSSN_r/namd_r/parest_r/64kB --debug-flags=DynamicCacheCtrl /home/nanoproj/michael/gem5/src/DynamicCacheCtrl/no_dc_config.py -b 510.parest_r -i 7000000 -l 64kB
+
+info: Standard input is not a terminal, disabling listeners.
+Selected SPEC_CPU2017 Benchmark
+--> 510.parest_r
+Global frequency set at 1000000000000 ticks per second
+warn: No dot file generated. Please install pydot to generate the dot file and pdf.
+warn: DRAM device capacity (0 Mbytes) does not match the address range assigned (512 Mbytes)
+warn: Sockets disabled, not accepting gdb connections
+Beginning simulation!
+info: Entering event queue @ 0.  Starting simulation...
+warn: readlink() called on '/proc/self/exe' may yield unexpected results in various settings.
+      Returning '/home/nanoproj/michael/spec2017/benchspec/CPU/510.parest_r/run/run_base_refrate_mytest-m64.0000/parest_r_base.mytest-m64'
+info: Increasing stack size by one page.
+warn: ignoring syscall access(...)
+3865229000: system.dynamic_cache: Dumping Stats
+
+8025250000: system.dynamic_cache: Dumping Stats
+
+12419434000: system.dynamic_cache: Dumping Stats
+
+master (0) [2]: Starting master...
+info: Increasing stack size by one page.
+info: Increasing stack size by one page.
+info: Increasing stack size by one page.
+17433183000: system.dynamic_cache: Dumping Stats
+
+22885059000: system.dynamic_cache: Dumping Stats
+
+28358788000: system.dynamic_cache: Dumping Stats
+
+Exiting @ tick 33795680000 because a thread reached the max instruction count
+./run_all.sh: line 62: [: missing `]'
+Found Benchmark: 511.povray_r
+
+warn: CheckedInt already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: Enum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: ScopedEnum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 version 20.0.0.2
+gem5 compiled Nov 29 2020 20:59:58
+gem5 started Nov 29 2020 21:34:47
+gem5 executing on nanocad-server-testbed, pid 141498
+command line: /home/nanoproj/michael/gem5/build/X86/gem5.opt --outdir=/home/nanoproj/michael/gem5/src/DynamicCacheCtrl/perlbench_r/gcc_r/bwaves_r/mcf_r/cactuBSSN_r/namd_r/parest_r/povray_r/64kB --debug-flags=DynamicCacheCtrl /home/nanoproj/michael/gem5/src/DynamicCacheCtrl/no_dc_config.py -b 511.povray_r -i 7000000 -l 64kB
+
+info: Standard input is not a terminal, disabling listeners.
+Selected SPEC_CPU2017 Benchmark
+--> 511.povray_r
+Global frequency set at 1000000000000 ticks per second
+warn: No dot file generated. Please install pydot to generate the dot file and pdf.
+warn: DRAM device capacity (0 Mbytes) does not match the address range assigned (512 Mbytes)
+warn: Sockets disabled, not accepting gdb connections
+Beginning simulation!
+info: Entering event queue @ 0.  Starting simulation...
+warn: readlink() called on '/proc/self/exe' may yield unexpected results in various settings.
+      Returning '/home/nanoproj/michael/spec2017/benchspec/CPU/511.povray_r/run/run_base_refrate_mytest-m64.0000/povray_r_base.mytest-m64'
+info: Increasing stack size by one page.
+warn: ignoring syscall access(...)
+info: Increasing stack size by one page.
+info: Increasing stack size by one page.
+info: Increasing stack size by one page.
+info: Increasing stack size by one page.
+info: Increasing stack size by one page.
+info: Increasing stack size by one page.
+4267436000: system.dynamic_cache: Dumping Stats
+
+8309103000: system.dynamic_cache: Dumping Stats
+
+13412759000: system.dynamic_cache: Dumping Stats
+
+18962488000: system.dynamic_cache: Dumping Stats
+
+24257196000: system.dynamic_cache: Dumping Stats
+
+29372254000: system.dynamic_cache: Dumping Stats
+
+Exiting @ tick 33000519000 because a thread reached the max instruction count
+./run_all.sh: line 62: [: missing `]'
+Found Benchmark: 519.lbm_r
+
+warn: CheckedInt already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: Enum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: ScopedEnum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 version 20.0.0.2
+gem5 compiled Nov 29 2020 20:59:58
+gem5 started Nov 29 2020 21:35:00
+gem5 executing on nanocad-server-testbed, pid 141618
+command line: /home/nanoproj/michael/gem5/build/X86/gem5.opt --outdir=/home/nanoproj/michael/gem5/src/DynamicCacheCtrl/perlbench_r/gcc_r/bwaves_r/mcf_r/cactuBSSN_r/namd_r/parest_r/povray_r/lbm_r/64kB --debug-flags=DynamicCacheCtrl /home/nanoproj/michael/gem5/src/DynamicCacheCtrl/no_dc_config.py -b 519.lbm_r -i 7000000 -l 64kB
+
+info: Standard input is not a terminal, disabling listeners.
+Selected SPEC_CPU2017 Benchmark
+--> 519.lbm_r
+Global frequency set at 1000000000000 ticks per second
+warn: No dot file generated. Please install pydot to generate the dot file and pdf.
+warn: DRAM device capacity (0 Mbytes) does not match the address range assigned (512 Mbytes)
+warn: Sockets disabled, not accepting gdb connections
+Beginning simulation!
+info: Entering event queue @ 0.  Starting simulation...
+warn: readlink() called on '/proc/self/exe' may yield unexpected results in various settings.
+      Returning '/home/nanoproj/michael/spec2017/benchspec/CPU/519.lbm_r/run/run_base_refrate_mytest-m64.0000/lbm_r_base.mytest-m64'
+info: Increasing stack size by one page.
+warn: ignoring syscall access(...)
+MAIN_printInfo:
+	grid size      : 100 x 100 x 130 = 1.30 * 10^6 Cells
+	nTimeSteps     : 3000
+	result file    : reference.dat
+	action         : nothing
+	simulation type: lid-driven cavity
+	obstacle file  : 100_100_130_ldc.of
+
+12571681000: system.dynamic_cache: Dumping Stats
+
+25257801000: system.dynamic_cache: Dumping Stats
+
+37944344000: system.dynamic_cache: Dumping Stats
+
+50631248000: system.dynamic_cache: Dumping Stats
+
+63318174000: system.dynamic_cache: Dumping Stats
+
+76004568000: system.dynamic_cache: Dumping Stats
+
+Exiting @ tick 88691707000 because a thread reached the max instruction count
+./run_all.sh: line 62: [: missing `]'
+Found Benchmark: 520.omnetpp_r
+
+warn: CheckedInt already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: Enum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: ScopedEnum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 version 20.0.0.2
+gem5 compiled Nov 29 2020 20:59:58
+gem5 started Nov 29 2020 21:35:23
+gem5 executing on nanocad-server-testbed, pid 141722
+command line: /home/nanoproj/michael/gem5/build/X86/gem5.opt --outdir=/home/nanoproj/michael/gem5/src/DynamicCacheCtrl/perlbench_r/gcc_r/bwaves_r/mcf_r/cactuBSSN_r/namd_r/parest_r/povray_r/lbm_r/omnetpp_r/64kB --debug-flags=DynamicCacheCtrl /home/nanoproj/michael/gem5/src/DynamicCacheCtrl/no_dc_config.py -b 520.omnetpp_r -i 7000000 -l 64kB
+
+info: Standard input is not a terminal, disabling listeners.
+Selected SPEC_CPU2017 Benchmark
+--> 520.omnetpp_r
+Global frequency set at 1000000000000 ticks per second
+warn: No dot file generated. Please install pydot to generate the dot file and pdf.
+warn: DRAM device capacity (0 Mbytes) does not match the address range assigned (512 Mbytes)
+warn: Sockets disabled, not accepting gdb connections
+Beginning simulation!
+info: Entering event queue @ 0.  Starting simulation...
+warn: readlink() called on '/proc/self/exe' may yield unexpected results in various settings.
+      Returning '/home/nanoproj/michael/spec2017/benchspec/CPU/520.omnetpp_r/run/run_base_refrate_mytest-m64.0000/omnetpp_r_base.mytest-m64'
+info: Increasing stack size by one page.
+warn: ignoring syscall access(...)
+OMNeT++ Discrete Event Simulation  (C) 1992-2008 Andras Varga, OpenSim Ltd.
+Version: 4.0, build: 090310-10709, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+See the license for distribution terms and warranty disclaimer
+4649874000: system.dynamic_cache: Dumping Stats
+
+9047720000: system.dynamic_cache: Dumping Stats
+
+12635193000: system.dynamic_cache: Dumping Stats
+
+16257846000: system.dynamic_cache: Dumping Stats
+
+19717127000: system.dynamic_cache: Dumping Stats
+
+23191943000: system.dynamic_cache: Dumping Stats
+
+Exiting @ tick 27047865000 because a thread reached the max instruction count
+./run_all.sh: line 62: [: missing `]'
+Found Benchmark: 557.xz_r
+
+warn: CheckedInt already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: Enum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: ScopedEnum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 version 20.0.0.2
+gem5 compiled Nov 29 2020 20:59:58
+gem5 started Nov 29 2020 21:35:35
+gem5 executing on nanocad-server-testbed, pid 141836
+command line: /home/nanoproj/michael/gem5/build/X86/gem5.opt --outdir=/home/nanoproj/michael/gem5/src/DynamicCacheCtrl/perlbench_r/gcc_r/bwaves_r/mcf_r/cactuBSSN_r/namd_r/parest_r/povray_r/lbm_r/omnetpp_r/xz_r/64kB --debug-flags=DynamicCacheCtrl /home/nanoproj/michael/gem5/src/DynamicCacheCtrl/no_dc_config.py -b 557.xz_r -i 7000000 -l 64kB
+
+info: Standard input is not a terminal, disabling listeners.
+Selected SPEC_CPU2017 Benchmark
+--> 557.xz_r
+Global frequency set at 1000000000000 ticks per second
+warn: No dot file generated. Please install pydot to generate the dot file and pdf.
+warn: DRAM device capacity (0 Mbytes) does not match the address range assigned (512 Mbytes)
+warn: Sockets disabled, not accepting gdb connections
+Beginning simulation!
+info: Entering event queue @ 0.  Starting simulation...
+warn: readlink() called on '/proc/self/exe' may yield unexpected results in various settings.
+      Returning '/home/nanoproj/michael/spec2017/benchspec/CPU/557.xz_r/run/run_base_refrate_mytest-m64.0000/xz_r_base.mytest-m64'
+info: Increasing stack size by one page.
+warn: ignoring syscall access(...)
+SPEC CPU XZ driver: input=cld.tar.xz insize=160
+17592425000: system.dynamic_cache: Dumping Stats
+
+35283821000: system.dynamic_cache: Dumping Stats
+
+Loading Input Data
+info: Increasing stack size by one page.
+info: Increasing stack size by one page.
+info: Increasing stack size by one page.
+47457716000: system.dynamic_cache: Dumping Stats
+
+50726728000: system.dynamic_cache: Dumping Stats
+
+53983146000: system.dynamic_cache: Dumping Stats
+
+57359311000: system.dynamic_cache: Dumping Stats
+
+Exiting @ tick 60693806000 because a thread reached the max instruction count
+./run_all.sh: line 62: [: missing `]'
+Found Benchmark: 600.perlbench_s
+
+warn: CheckedInt already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: Enum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: ScopedEnum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 version 20.0.0.2
+gem5 compiled Nov 29 2020 20:59:58
+gem5 started Nov 29 2020 21:35:56
+gem5 executing on nanocad-server-testbed, pid 141926
+command line: /home/nanoproj/michael/gem5/build/X86/gem5.opt --outdir=/home/nanoproj/michael/gem5/src/DynamicCacheCtrl/perlbench_r/gcc_r/bwaves_r/mcf_r/cactuBSSN_r/namd_r/parest_r/povray_r/lbm_r/omnetpp_r/xz_r/perlbench_s/64kB --debug-flags=DynamicCacheCtrl /home/nanoproj/michael/gem5/src/DynamicCacheCtrl/no_dc_config.py -b 600.perlbench_s -i 7000000 -l 64kB
+
+info: Standard input is not a terminal, disabling listeners.
+Selected SPEC_CPU2017 Benchmark
+--> 600.perlbench_s
+Global frequency set at 1000000000000 ticks per second
+warn: No dot file generated. Please install pydot to generate the dot file and pdf.
+warn: DRAM device capacity (0 Mbytes) does not match the address range assigned (512 Mbytes)
+warn: Sockets disabled, not accepting gdb connections
+Beginning simulation!
+info: Entering event queue @ 0.  Starting simulation...
+warn: readlink() called on '/proc/self/exe' may yield unexpected results in various settings.
+      Returning '/home/nanoproj/michael/spec2017/benchspec/CPU/600.perlbench_s/run/run_base_refspeed_mytest-m64.0000/perlbench_s_base.mytest-m64'
+info: Increasing stack size by one page.
+warn: ignoring syscall access(...)
+warn: ignoring syscall rt_sigaction(...)
+      (further warnings will be suppressed)
+info: Increasing stack size by one page.
+info: Increasing stack size by one page.
+6789632000: system.dynamic_cache: Dumping Stats
+
+info: Increasing stack size by one page.
+14278701000: system.dynamic_cache: Dumping Stats
+
+21639366000: system.dynamic_cache: Dumping Stats
+
+27920713000: system.dynamic_cache: Dumping Stats
+
+34126400000: system.dynamic_cache: Dumping Stats
+
+41090582000: system.dynamic_cache: Dumping Stats
+
+Exiting @ tick 48142443000 because a thread reached the max instruction count
+./run_all.sh: line 62: [: missing `]'
+Found Benchmark: 602.gcc_s
+
+warn: CheckedInt already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: Enum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: ScopedEnum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 version 20.0.0.2
+gem5 compiled Nov 29 2020 20:59:58
+gem5 started Nov 29 2020 21:36:11
+gem5 executing on nanocad-server-testbed, pid 142034
+command line: /home/nanoproj/michael/gem5/build/X86/gem5.opt --outdir=/home/nanoproj/michael/gem5/src/DynamicCacheCtrl/perlbench_r/gcc_r/bwaves_r/mcf_r/cactuBSSN_r/namd_r/parest_r/povray_r/lbm_r/omnetpp_r/xz_r/perlbench_s/gcc_s/64kB --debug-flags=DynamicCacheCtrl /home/nanoproj/michael/gem5/src/DynamicCacheCtrl/no_dc_config.py -b 602.gcc_s -i 7000000 -l 64kB
+
+info: Standard input is not a terminal, disabling listeners.
+Selected SPEC_CPU2017 Benchmark
+--> 602.gcc_s
+Global frequency set at 1000000000000 ticks per second
+warn: No dot file generated. Please install pydot to generate the dot file and pdf.
+warn: DRAM device capacity (0 Mbytes) does not match the address range assigned (512 Mbytes)
+warn: Sockets disabled, not accepting gdb connections
+Beginning simulation!
+info: Entering event queue @ 0.  Starting simulation...
+warn: readlink() called on '/proc/self/exe' may yield unexpected results in various settings.
+      Returning '/home/nanoproj/michael/spec2017/benchspec/CPU/602.gcc_s/run/run_base_refspeed_mytest-m64.0000/sgcc_base.mytest-m64'
+info: Increasing stack size by one page.
+warn: ignoring syscall access(...)
+warn: ignoring syscall rt_sigaction(...)
+      (further warnings will be suppressed)
+warn: getrlimit: unimplemented resource 9
+warn: getrlimit: unimplemented resource 9
+warn: getrlimit: unimplemented resource 5
+warn: getrlimit: unimplemented resource 9
+4084583000: system.dynamic_cache: Dumping Stats
+
+8812172000: system.dynamic_cache: Dumping Stats
+
+14668290000: system.dynamic_cache: Dumping Stats
+
+20370776000: system.dynamic_cache: Dumping Stats
+
+25685267000: system.dynamic_cache: Dumping Stats
+
+30556963000: system.dynamic_cache: Dumping Stats
+
+Exiting @ tick 35687864000 because a thread reached the max instruction count
+./run_all.sh: line 62: [: missing `]'
+Found Benchmark: 603.bwaves_s
+
+warn: CheckedInt already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: Enum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+warn: ScopedEnum already exists in allParams. This may be caused by the Python 2.7 compatibility layer.
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 version 20.0.0.2
+gem5 compiled Nov 29 2020 20:59:58
+gem5 started Nov 29 2020 21:36:25
+gem5 executing on nanocad-server-testbed, pid 142102
+command line: /home/nanoproj/michael/gem5/build/X86/gem5.opt --outdir=/home/nanoproj/michael/gem5/src/DynamicCacheCtrl/perlbench_r/gcc_r/bwaves_r/mcf_r/cactuBSSN_r/namd_r/parest_r/povray_r/lbm_r/omnetpp_r/xz_r/perlbench_s/gcc_s/bwaves_s/64kB --debug-flags=DynamicCacheCtrl /home/nanoproj/michael/gem5/src/DynamicCacheCtrl/no_dc_config.py -b 603.bwaves_s -i 7000000 -l 64kB
+
+info: Standard input is not a terminal, disabling listeners.
+Selected SPEC_CPU2017 Benchmark
+--> 603.bwaves_s
+Global frequency set at 1000000000000 ticks per second
+warn: No dot file generated. Please install pydot to generate the dot file and pdf.
+warn: DRAM device capacity (0 Mbytes) does not match the address range assigned (512 Mbytes)
+warn: Sockets disabled, not accepting gdb connections
+Beginning simulation!
+info: Entering event queue @ 0.  Starting simulation...
+warn: ignoring syscall set_robust_list(...)
+warn: ignoring syscall rt_sigaction(...)
+      (further warnings will be suppressed)
+warn: ignoring syscall rt_sigprocmask(...)
+      (further warnings will be suppressed)
+warn: readlink() called on '/proc/self/exe' may yield unexpected results in various settings.
+      Returning '/home/nanoproj/michael/spec2017/benchspec/CPU/603.bwaves_s/run/run_base_refspeed_mytest-m64.0000/speed_bwaves_base.mytest-m64'
+info: Increasing stack size by one page.
+warn: ignoring syscall access(...)
+warn: instruction 'fwait' unimplemented
+warn: instruction 'fnclex' unimplemented
+warn: ignoring syscall sched_getaffinity(...)
+info: Increasing stack size by one page.
+ BI-CGSTAB & symmetric difference scheme 
+ 3D  Laminar shock wave propagation
+At line 24 of file flow_lam.fppized.f (unit = 5, file = 'stdin')
+Fortran runtime error: End of file
+panic: Tried to execute unmapped address 0.
+PC: 0, Instr:   CALL_NEAR_I : wrip   , t7, t1
+Memory Usage: 1176340 KBytes
+Program aborted at tick 314974000
+--- BEGIN LIBC BACKTRACE ---
+/home/nanoproj/michael/gem5/build/X86/gem5.opt(_Z15print_backtracev+0x28)[0x18076f8]
+/home/nanoproj/michael/gem5/build/X86/gem5.opt(_Z12abortHandleri+0x46)[0x18186b6]
+/lib/x86_64-linux-gnu/libpthread.so.0(+0x11390)[0x7f14d9a15390]
+/lib/x86_64-linux-gnu/libc.so.6(gsignal+0x38)[0x7f14d7d98438]
+/lib/x86_64-linux-gnu/libc.so.6(abort+0x16a)[0x7f14d7d9a03a]
+/home/nanoproj/michael/gem5/build/X86/gem5.opt[0x8417bf]
+/home/nanoproj/michael/gem5/build/X86/gem5.opt(_ZN6X86ISA9PageFault6invokeEP13ThreadContextRK14RefCountingPtrI10StaticInstE+0x541)[0xe04e31]
+/home/nanoproj/michael/gem5/build/X86/gem5.opt(_ZN13BaseSimpleCPU9advancePCERKSt10shared_ptrI9FaultBaseE+0xfe)[0x139ccde]
+/home/nanoproj/michael/gem5/build/X86/gem5.opt(_ZN15TimingSimpleCPU11advanceInstERKSt10shared_ptrI9FaultBaseE+0xec)[0x1398afc]
+/home/nanoproj/michael/gem5/build/X86/gem5.opt(_ZN15TimingSimpleCPU9sendFetchERKSt10shared_ptrI9FaultBaseERKS0_I7RequestEP13ThreadContext+0x121)[0x1398f91]
+/home/nanoproj/michael/gem5/build/X86/gem5.opt(_ZN6X86ISA3TLB15translateTimingERKSt10shared_ptrI7RequestEP13ThreadContextPN7BaseTLB11TranslationENS8_4ModeE+0xa4)[0xe32bc4]
+/home/nanoproj/michael/gem5/build/X86/gem5.opt(_ZN15TimingSimpleCPU5fetchEv+0x450)[0x13988d0]
+/home/nanoproj/michael/gem5/build/X86/gem5.opt(_ZN15TimingSimpleCPU11advanceInstERKSt10shared_ptrI9FaultBaseE+0x326)[0x1398d36]
+/home/nanoproj/michael/gem5/build/X86/gem5.opt(_ZN15TimingSimpleCPU14completeIfetchEP6Packet+0x20b)[0x13981eb]
+/home/nanoproj/michael/gem5/build/X86/gem5.opt(_ZN15TimingSimpleCPU5fetchEv+0x129)[0x13985a9]
+/home/nanoproj/michael/gem5/build/X86/gem5.opt(_ZN15TimingSimpleCPU11advanceInstERKSt10shared_ptrI9FaultBaseE+0x326)[0x1398d36]
+/home/nanoproj/michael/gem5/build/X86/gem5.opt(_ZN15TimingSimpleCPU14completeIfetchEP6Packet+0x20b)[0x13981eb]
+/home/nanoproj/michael/gem5/build/X86/gem5.opt(_ZN15TimingSimpleCPU5fetchEv+0x129)[0x13985a9]
+/home/nanoproj/michael/gem5/build/X86/gem5.opt(_ZN15TimingSimpleCPU11advanceInstERKSt10shared_ptrI9FaultBaseE+0x326)[0x1398d36]
+/home/nanoproj/michael/gem5/build/X86/gem5.opt(_ZN15TimingSimpleCPU18completeDataAccessEP6Packet+0x288)[0x13996a8]
+/home/nanoproj/michael/gem5/build/X86/gem5.opt(_ZN10EventQueue10serviceOneEv+0x135)[0x180f375]
+/home/nanoproj/michael/gem5/build/X86/gem5.opt(_Z9doSimLoopP10EventQueue+0x48)[0x18309f8]
+/home/nanoproj/michael/gem5/build/X86/gem5.opt(_Z8simulatem+0xd03)[0x1831ab3]
+/home/nanoproj/michael/gem5/build/X86/gem5.opt[0x18e9e2d]
+/home/nanoproj/michael/gem5/build/X86/gem5.opt[0xa588b8]
+/usr/lib/x86_64-linux-gnu/libpython2.7.so.1.0(PyEval_EvalFrameEx+0x7852)[0x7f14d9cd27b2]
+/usr/lib/x86_64-linux-gnu/libpython2.7.so.1.0(PyEval_EvalCodeEx+0x85c)[0x7f14d9e0911c]
+/usr/lib/x86_64-linux-gnu/libpython2.7.so.1.0(PyEval_EvalFrameEx+0x6ffd)[0x7f14d9cd1f5d]
+/usr/lib/x86_64-linux-gnu/libpython2.7.so.1.0(PyEval_EvalCodeEx+0x85c)[0x7f14d9e0911c]
+/usr/lib/x86_64-linux-gnu/libpython2.7.so.1.0(PyEval_EvalCode+0x19)[0x7f14d9ccade9]
+/usr/lib/x86_64-linux-gnu/libpython2.7.so.1.0(PyEval_EvalFrameEx+0x613b)[0x7f14d9cd109b]
+/usr/lib/x86_64-linux-gnu/libpython2.7.so.1.0(PyEval_EvalCodeEx+0x85c)[0x7f14d9e0911c]
+--- END LIBC BACKTRACE ---
+./run_all.sh: line 56: 142102 Aborted                 (core dumped) ${GEM5OPT} --outdir=${OUTDIR}/${SIZE} --debug-flags=DynamicCacheCtrl ${SPEC17CFG} -b ${ACTUALBENCHNAME} -i ${MAXINST} -l ${SIZE}
+./run_all.sh: line 62: [: missing `]'
+Found Benchmark: spec2017
+
+./run_all.sh: line 79: cd: ./run/run*: No such file or directory
+Error: Benchmark spec2017 has not been built yet
