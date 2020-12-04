@@ -170,8 +170,8 @@ class CacheBlk : public ReplaceableEntry
         invalidate();
     }
 
-    CacheBlk(const CacheBlk&) = delete;
-    CacheBlk& operator=(const CacheBlk&) = delete;
+    //CacheBlk(const CacheBlk&) = delete;
+    //CacheBlk& operator=(const CacheBlk&) = delete;
     virtual ~CacheBlk() {};
 
     /**

@@ -78,9 +78,11 @@ void
 BaseIndexingPolicy::setEntry(ReplaceableEntry* entry, const uint64_t index)
 {
     // Calculate set and way from entry index
-    const std::lldiv_t div_result = std::div((long long)index, assoc);
-    const uint32_t set = div_result.quot;
-    const uint32_t way = div_result.rem;
+    std::lldiv_t div_result = std::div((long long)index, assoc);
+    uint32_t set = div_result.quot;
+    uint32_t way = div_result.rem;
+
+
 
     // Sanity check
     assert(set < numSets);
@@ -90,6 +92,16 @@ BaseIndexingPolicy::setEntry(ReplaceableEntry* entry, const uint64_t index)
 
     // Inform the entry its position
     entry->setPosition(set, way);
+}
+
+
+void
+BaseIndexingPolicy::increaseAssociativity()
+{
+    assoc += 1;
+
+    for (uint32_t i = 0; i < numSets; ++i)
+        sets[i].resize(assoc);
 }
 
 Addr

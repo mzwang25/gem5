@@ -26,7 +26,8 @@ DynamicCacheCtrl::DynamicCacheCtrl(DynamicCacheCtrlParams* params) :
     lastFlushReq(0),
     justDumped(false),
     cacheFlushWait(false),
-    needCPURetry(false)
+    needCPURetry(false),
+    accountFlush(params->accountFlush)
 {
     dynamic_cache_global = this;    
     num_flushes = 0;
@@ -90,13 +91,13 @@ DynamicCacheCtrl::mem_port_to_use(bool& needCacheFlush)
     Counter current_inst = cpu_object -> numSimulatedInsts();
 
     //Right it starts with no cache -> cache -> no cache
-    if(current_inst < 1000000)
+    if(current_inst < 3000000)
     {
         next_state = USING_CACHE;
     }
     else
     {
-        next_state = USING_NONE;
+        next_state = USING_CACHE;
     }
 
     //current_inst may never reach 1mil so mod won't work
@@ -105,8 +106,8 @@ DynamicCacheCtrl::mem_port_to_use(bool& needCacheFlush)
         LOG("Dumping Stats");
         Stats::dump();
         lastStatDump += 1000000;
-    }
 
+    }
 
     /* Handle Cache writebacks / invalidations */
     if(current_state == USING_CACHE && next_state == USING_NONE)
@@ -151,7 +152,8 @@ DynamicCacheCtrl::handleTimingReq(PacketPtr pkt)
 
     bool result = false; 
 
-    if(needCacheFlush)
+
+    if(needCacheFlush && accountFlush)
     {
         LOG("Cache Flush requested");
         lastFlushReq = curTick();
