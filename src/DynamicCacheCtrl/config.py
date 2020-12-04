@@ -20,10 +20,7 @@ from m5.objects import *
 from m5.util import addToPath
 from optparse import OptionParser
 
-
-ACCOUNTFLUSH = False
-
-###############################################################################
+#=================================================================
 # SPEC BENCHMARKS
 
 addToPath("/home/nanoproj/michael/gem5/src/DynamicCacheCtrl/")
@@ -52,7 +49,7 @@ if(options.benchmark == None):
 process = getBenchmark(options.benchmark)
 
 
-###############################################################################
+#=================================================================
 # Some Caches
 
 class L1Cache(NoncoherentCache):
@@ -105,10 +102,7 @@ class DCXBar(NoncoherentXBar):
     forward_latency = 4
     response_latency = 2
 
-
-
-###############################################################################
-
+#=================================================================
 system = System()
 system.clk_domain = SrcClockDomain()
 system.clk_domain.clock = '1GHz'
@@ -135,7 +129,7 @@ system.l2bar.master = system.l2cache.cpu_side
 
 #=================================================================
 #Connection to Dynamic Cache Component
-system.dynamic_cache.accountFlush = ACCOUNTFLUSH
+system.dynamic_cache.accountFlush = options.flush
 
 system.l2cache.mem_side = system.dynamic_cache.cpu_side
 
