@@ -60,8 +60,8 @@ BaseTags::BaseTags(const Params *p)
       size(p->size), lookupLatency(p->tag_latency),
       system(p->system), indexingPolicy(p->indexing_policy),
       warmupBound((p->warmup_percentage/100.0) * (p->size / p->block_size)),
-      warmedUp(false), numBlocks(p->size / p->block_size),
-      dataBlks(new uint8_t[p->size]), // Allocate data storage in one big chunk
+      warmedUp(false), numBlocks(p->size / p->block_size), didSizeIncrease(false),
+      dataBlks(new uint8_t[2 * p->size]), // Allocate data storage in one big chunk
       stats(*this)
 {
     registerExitCallback(new BaseTagsCallback(this));
@@ -80,11 +80,14 @@ BaseTags::findBlock(Addr addr, bool is_secure) const
     Addr tag = extractTag(addr);
 
     // Find possible entries that may contain the given address
+
     const std::vector<ReplaceableEntry*> entries =
         indexingPolicy->getPossibleEntries(addr);
 
     // Search for block
     for (const auto& location : entries) {
+        if(location == nullptr) std::cout << addr << std::endl;
+        assert(location != nullptr);
         CacheBlk* blk = static_cast<CacheBlk*>(location);
         if ((blk->tag == tag) && blk->isValid() &&
             (blk->isSecure() == is_secure)) {

@@ -33,7 +33,7 @@ process = None
 parser = OptionParser()
 parser.add_option("-b", "--benchmark", dest="benchmark", help="name of benchmark")
 parser.add_option("-i", "--maxinst", dest="maxinst", help="max insts", default=3000000)
-parser.add_option("-l3", "--l3size", dest="l3size", help="l3size", default="8192kB")
+parser.add_option("-l", "--l3size", dest="l3size", help="l3size", default="8192kB")
 parser.add_option("-f", "--flush", 
                    dest="flush", 
                    help="account flushing penalty", 

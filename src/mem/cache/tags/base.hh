@@ -75,7 +75,7 @@ class BaseTags : public ClockedObject
     /** Mask out all bits that aren't part of the block offset. */
     const Addr blkMask;
     /** The size of the cache. */
-    const unsigned size;
+    unsigned size;
     /** The tag lookup latency of the cache. */
     const Cycles lookupLatency;
 
@@ -94,7 +94,9 @@ class BaseTags : public ClockedObject
     bool warmedUp;
 
     /** the number of blocks in the cache */
-    const unsigned numBlocks;
+    unsigned numBlocks;
+
+    bool didSizeIncrease;
 
     /** The data blocks, 1 per cache block. */
     std::unique_ptr<uint8_t[]> dataBlks;
@@ -259,6 +261,13 @@ class BaseTags : public ClockedObject
 
         blk->invalidate();
     }
+
+    /**
+     * Double the size of the cache by increasing ways.
+     */
+     
+     virtual void doubleSize()
+     {}
 
     /**
      * Find replacement victim based on address. If the address requires
