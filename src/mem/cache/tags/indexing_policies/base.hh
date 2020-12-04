@@ -155,6 +155,10 @@ class BaseIndexingPolicy : public SimObject
      */
     virtual Addr regenerateAddr(const Addr tag, const ReplaceableEntry* entry)
                                                                     const = 0;
+
+    // Change #of ways dynamically
+    void increaseAssociativity();
+
 };
 
 #endif //__MEM_CACHE_INDEXING_POLICIES_BASE_HH__

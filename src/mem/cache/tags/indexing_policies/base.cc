@@ -83,17 +83,6 @@ BaseIndexingPolicy::setEntry(ReplaceableEntry* entry, const uint64_t index)
     uint32_t way = div_result.rem;
 
 
-    if((curTick() >= 12518177000 && assoc == 1 )|| set >= numSets) {
-        assoc = 2;
-        div_result = std::div((long long)index, assoc);
-        set = div_result.quot;
-        way = div_result.rem;
-
-        for (uint32_t i = 0; i < numSets; ++i) {
-            sets[i].resize(assoc);
-        }
-
-    }
 
     // Sanity check
     assert(set < numSets);
@@ -103,6 +92,16 @@ BaseIndexingPolicy::setEntry(ReplaceableEntry* entry, const uint64_t index)
 
     // Inform the entry its position
     entry->setPosition(set, way);
+}
+
+
+void
+BaseIndexingPolicy::increaseAssociativity()
+{
+    assoc += 1;
+
+    for (uint32_t i = 0; i < numSets; ++i)
+        sets[i].resize(assoc);
 }
 
 Addr

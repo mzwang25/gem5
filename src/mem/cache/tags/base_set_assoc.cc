@@ -99,7 +99,9 @@ BaseSetAssoc::invalidate(CacheBlk *blk)
 void
 BaseSetAssoc::doubleSize()
 {
-    cout << "Hello I am Double Size!" << endl;    
+    cout << "Hello I am going to double your Cache size!" << endl;    
+
+    indexingPolicy->increaseAssociativity();
 
     unsigned start_index = numBlocks - 1;
     blks.resize(2 * numBlocks);
