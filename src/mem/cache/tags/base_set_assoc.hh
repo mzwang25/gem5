@@ -113,7 +113,7 @@ class BaseSetAssoc : public BaseTags
 
     void doubleSize() override;
 
-    EventFunctionWrapper event;
+    EventFunctionWrapper assocIncreaseEvent;
 
     /**
      * Access block and update replacement data. May not succeed, in which case

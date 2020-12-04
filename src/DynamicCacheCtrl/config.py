@@ -75,6 +75,8 @@ class L2Cache(NoncoherentCache):
     mshrs = 4
     tgts_per_mshr = 20
     clusivity = Param.Clusivity("mostly_excl")
+    tags = BaseSetAssoc(addWayAt=12518177000 )
+
 
     def __init__(self, options=None):
         super(L2Cache, self).__init__()
@@ -111,7 +113,6 @@ system.mem_mode = 'timing'
 system.mem_ranges = [AddrRange('512MB')]
 
 system.cpu = TimingSimpleCPU()
-system.dynamic_cache = DynamicCacheCtrl()
 system.dcache = L1Cache()
 system.icache = L1Cache()
 system.l2cache = L2Cache()
@@ -126,28 +127,8 @@ system.dcache.mem_side = system.l2bar.slave
 system.icache.mem_side = system.l2bar.slave
 
 system.l2bar.master = system.l2cache.cpu_side
+system.l2cache.mem_side = system.membus.slave
 
-#=================================================================
-#Connection to Dynamic Cache Component
-system.dynamic_cache.accountFlush = options.flush
-
-system.l2cache.mem_side = system.dynamic_cache.cpu_side
-
-system.cache_small = L3Cache()
-system.cache_medium = L3Cache()
-system.cache_large = L3Cache()
-
-
-system.dynamic_cache.connectCaches(
-    system.membus, 
-    system.cache_small, 
-    system.cache_medium, 
-    system.cache_large)
-
-system.dynamic_cache.cpu_object = system.cpu
-
-#=================================================================
-# Other system configs
 
 system.cpu.createInterruptController()
 system.cpu.interrupts[0].pio = system.membus.master

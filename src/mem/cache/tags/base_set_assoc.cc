@@ -56,13 +56,19 @@ using namespace std;
 BaseSetAssoc::BaseSetAssoc(const Params *p)
     :BaseTags(p), allocAssoc(p->assoc), blks(p->size / p->block_size),
      sequentialAccess(p->sequential_access),
-     replacementPolicy(p->replacement_policy), event([this]{doubleSize();}, name())
+     replacementPolicy(p->replacement_policy), 
+     assocIncreaseEvent([this]{doubleSize();}, name())
 {
     // Check parameters
     if (blkSize < 4 || !isPowerOf2(blkSize)) {
         fatal("Block size must be at least 4 and a power of 2");
     }
-    schedule(event, 12518177000);
+
+    std::cout << "Increase assoc @ Tick " << p->addWayAt << std::endl;
+    
+    if(p->addWayAt != 0)
+        schedule(assocIncreaseEvent, p->addWayAt);
+
 }
 
 void
