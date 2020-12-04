@@ -98,7 +98,7 @@ BaseIndexingPolicy::setEntry(ReplaceableEntry* entry, const uint64_t index)
 void
 BaseIndexingPolicy::increaseAssociativity()
 {
-    assoc += 1;
+    assoc *= 2;
 
     for (uint32_t i = 0; i < numSets; ++i)
         sets[i].resize(assoc);
