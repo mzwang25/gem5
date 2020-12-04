@@ -78,9 +78,22 @@ void
 BaseIndexingPolicy::setEntry(ReplaceableEntry* entry, const uint64_t index)
 {
     // Calculate set and way from entry index
-    const std::lldiv_t div_result = std::div((long long)index, assoc);
-    const uint32_t set = div_result.quot;
-    const uint32_t way = div_result.rem;
+    std::lldiv_t div_result = std::div((long long)index, assoc);
+    uint32_t set = div_result.quot;
+    uint32_t way = div_result.rem;
+
+
+    if((curTick() >= 12518177000 && assoc == 1 )|| set >= numSets) {
+        assoc = 2;
+        div_result = std::div((long long)index, assoc);
+        set = div_result.quot;
+        way = div_result.rem;
+
+        for (uint32_t i = 0; i < numSets; ++i) {
+            sets[i].resize(assoc);
+        }
+
+    }
 
     // Sanity check
     assert(set < numSets);

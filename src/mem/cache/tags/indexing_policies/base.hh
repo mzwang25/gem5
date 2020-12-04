@@ -66,7 +66,7 @@ class BaseIndexingPolicy : public SimObject
     /**
      * The associativity.
      */
-    const unsigned assoc;
+    unsigned assoc;
 
     /**
      * The number of sets in the cache.

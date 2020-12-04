@@ -2,7 +2,7 @@
 
 SPECROOTDIR=~/michael/spec2017
 GEM5OPT=~/michael/gem5/build/X86/gem5.opt
-SPEC17CFG=~/michael/gem5/src/DynamicCacheCtrl/no_dc_config.py
+SPEC17CFG=~/michael/gem5/src/DynamicCacheCtrl/config.py
 SIMOPTIONS='--fast-forward=1000000 --at-instruction --maxinsts=500000000 --caches --l2cache'
  
 ######################################################################

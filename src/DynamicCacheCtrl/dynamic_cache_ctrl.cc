@@ -93,11 +93,11 @@ DynamicCacheCtrl::mem_port_to_use(bool& needCacheFlush)
     //Right it starts with no cache -> cache -> no cache
     if(current_inst < 3000000)
     {
-        next_state = USING_NONE;
+        next_state = USING_CACHE;
     }
     else
     {
-        next_state = USING_NONE;
+        next_state = USING_CACHE;
     }
 
     //current_inst may never reach 1mil so mod won't work
