@@ -82,10 +82,13 @@ BaseIndexingPolicy::setEntry(ReplaceableEntry* entry, const uint64_t index)
     uint32_t set = div_result.quot;
     uint32_t way = div_result.rem;
 
-
-
     // Sanity check
     assert(set < numSets);
+
+    if(set == 1200)
+    {
+        std::cout << "working set 1200 with way " << way << std::endl;
+    }
 
     // Assign a free pointer
     sets[set][way] = entry;
@@ -98,7 +101,7 @@ BaseIndexingPolicy::setEntry(ReplaceableEntry* entry, const uint64_t index)
 void
 BaseIndexingPolicy::increaseAssociativity()
 {
-    assoc *= 2;
+    assoc = 2;
 
     for (uint32_t i = 0; i < numSets; ++i)
         sets[i].resize(assoc);

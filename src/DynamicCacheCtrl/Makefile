@@ -8,7 +8,7 @@ stat:
 	@./mkstats.sh ${OUTDIR}/
 
 test:
-	./run_one.sh lbm_r ${OUTDIR}/test 2000000
+	./run_one.sh gcc_r ${OUTDIR}/test 7000000
 
 
 spec:

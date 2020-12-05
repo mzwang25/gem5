@@ -54,6 +54,7 @@ class L1Cache(Cache):
     response_latency = 2
     mshrs = 4
     tgts_per_mshr = 20
+    clusivity = Param.Clusivity("mostly_excl")
 
     def __init__(self, options=None):
         super(L1Cache, self).__init__()
@@ -67,6 +68,7 @@ class L2Cache(Cache):
     response_latency = 20
     mshrs = 20
     tgts_per_mshr = 12
+    clusivity = Param.Clusivity("mostly_excl")
 
 
     def __init__(self, options=None):
@@ -100,7 +102,7 @@ class L4Cache(Cache):
     clusivity = Param.Clusivity("mostly_excl")
 
     #will double size and assoc at ticks in list
-    tags = BaseSetAssoc(addWayAt=[12518177000]) 
+    #tags = BaseSetAssoc(addWayAt=[300000000]) 
 
     def __init__(self, options=None):
         super(L4Cache, self).__init__()
@@ -140,19 +142,6 @@ system.DynamicCache.mem_side = system.membus.slave
 #=================================================================
 # Add a memory delay component to simulated slow PCM
 
-system.mem_delay = SimpleMemDelay(
-    read_req = "130ns",
-    read_resp = "130ns",
-    write_req = "185ns",
-    write_resp = "185ns"
-
-)
-
-system.mem_delay.slave = system.membus.master
-
-system.mem_ctrl = DDR3_1600_8x8()
-system.mem_ctrl.range = system.mem_ranges[0]
-system.mem_ctrl.port = system.mem_delay.master
 #=================================================================
 system.cpu.createInterruptController()
 system.cpu.interrupts[0].pio = system.membus.master
@@ -161,6 +150,8 @@ system.cpu.interrupts[0].int_slave = system.membus.master
 
 
 system.system_port = system.membus.slave
+system.mem_ctrl = DDR3_1600_8x8()
+system.mem_ctrl.port = system.membus.master
 
 system.cpu.workload = process
 system.cpu.createThreads()

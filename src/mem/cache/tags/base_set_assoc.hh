@@ -114,6 +114,7 @@ class BaseSetAssoc : public BaseTags
     void doubleSize() override;
 
     std::vector<EventFunctionWrapper*> assocIncreaseEvents;
+    EventFunctionWrapper hello;
 
     /**
      * Access block and update replacement data. May not succeed, in which case
