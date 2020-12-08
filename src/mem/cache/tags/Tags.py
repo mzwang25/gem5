@@ -78,6 +78,8 @@ class BaseSetAssoc(BaseTags):
     # Get the cache associativity
     assoc = Param.Int(Parent.assoc, "associativity")
 
+    addWayAt = VectorParam.UInt64([], "Instruction to add a way at")
+
     # Get replacement policy from the parent (cache)
     replacement_policy = Param.BaseReplacementPolicy(
         Parent.replacement_policy, "Replacement policy")

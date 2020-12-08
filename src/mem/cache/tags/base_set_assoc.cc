@@ -54,15 +54,29 @@ using namespace std;
 
 
 BaseSetAssoc::BaseSetAssoc(const Params *p)
-    :BaseTags(p), allocAssoc(p->assoc), blks(p->size / p->block_size),
+    :BaseTags(p), allocAssoc(p->assoc), blks(2 * p->size / p->block_size),
      sequentialAccess(p->sequential_access),
-     replacementPolicy(p->replacement_policy), event([this]{doubleSize();}, name())
+     replacementPolicy(p->replacement_policy),
+     hello([this]{doubleSize();}, name())
 {
     // Check parameters
     if (blkSize < 4 || !isPowerOf2(blkSize)) {
         fatal("Block size must be at least 4 and a power of 2");
     }
-    schedule(event, 12518177000);
+
+    if(p->addWayAt.size() != 0)
+    {
+        for(auto i = p->addWayAt.begin(); i != p->addWayAt.end(); i++)
+        {
+            std::cout << "Increase assoc @ Tick " << *i << std::endl;
+            auto event = new EventFunctionWrapper([this]{doubleSize();}, name());
+            assocIncreaseEvents.push_back(event);
+            schedule(event, *i);
+        }
+
+    }
+
+    schedule(hello, 12213556000);
 }
 
 void
@@ -72,6 +86,8 @@ BaseSetAssoc::tagsInit()
     for (unsigned blk_index = 0; blk_index < numBlocks; blk_index++) {
         // Locate next cache block
         CacheBlk* blk = &blks[blk_index];
+        assert(!blk->isValid());
+        assert(blk->tag);
 
         // Link block to indexing policy
         indexingPolicy->setEntry(blk, blk_index);
@@ -103,32 +119,59 @@ BaseSetAssoc::doubleSize()
 
     indexingPolicy->increaseAssociativity();
 
-    unsigned start_index = numBlocks - 1;
-    blks.resize(2 * numBlocks);
+    for (unsigned blk_index = 0; blk_index < numBlocks; blk_index++) {
+        
+        CacheBlk* blk = &blks[blk_index];
+        indexingPolicy->setEntry(blk, 2*blk_index);
+        assert(blk->isValid() || !blk->isValid());
+        //std::cout << (blk->tag) << std::endl;
+
+        
+    }
+    CacheBlk* blk3 = &blks[0];
+    CacheBlk* blk4 = static_cast<CacheBlk*>(indexingPolicy->getEntry(0, 0));
+    assert(blk3 == blk4);
+
+    unsigned start_index = numBlocks;
+
+
     numBlocks *= 2;
-    size *= 2;
+    //size *= 2;
+
+    blk3 = &blks[0];
+    blk4 = static_cast<CacheBlk*>(indexingPolicy->getEntry(0, 0));
+    assert(blk3 == blk4);
 
     // Initialize all blocks
+
     for (unsigned blk_index = start_index; blk_index < numBlocks; blk_index++) {
-        // Locate next cache block
+        // locate next cache block
         CacheBlk* blk = &blks[blk_index];
 
-        // Link block to indexing policy
-        //indexingPolicy->setEntry(blk, blk_index);
+        assert(!blk->isValid());
+        assert(blk->tag);
 
-        // Associate a data chunk to the block
+        // link block to indexing policy
+        indexingPolicy->setEntry(blk, 2*(blk_index - start_index) + 1);
+
+        // associate a data chunk to the block
         blk->data = &dataBlks[blkSize*blk_index];
 
-        // Associate a replacement data entry to the block
+        // associate a replacement data entry to the block
         blk->replacementData = replacementPolicy->instantiateEntry();
     }
 
-    for (unsigned blk_index = 0; blk_index < numBlocks; blk_index++) {
-        CacheBlk* blk = &blks[blk_index];
-        assert(blk != nullptr);
-        indexingPolicy->setEntry(blk, blk_index);
-    }
+    if(blks.size() > 2400)
+    {
+        CacheBlk* blk = &blks[start_index];
+        CacheBlk* blk2 = static_cast<CacheBlk*>(indexingPolicy->getEntry(0, 1));
+        CacheBlk* blk3 = &blks[0];
+        CacheBlk* blk4 = static_cast<CacheBlk*>(indexingPolicy->getEntry(0, 0));
 
+        assert(blk == blk2);
+        assert(blk3 == blk4);
+
+    }
 }
 
 BaseSetAssoc *

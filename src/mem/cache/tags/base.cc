@@ -84,9 +84,9 @@ BaseTags::findBlock(Addr addr, bool is_secure) const
     const std::vector<ReplaceableEntry*> entries =
         indexingPolicy->getPossibleEntries(addr);
 
+
     // Search for block
     for (const auto& location : entries) {
-        if(location == nullptr) std::cout << addr << std::endl;
         assert(location != nullptr);
         CacheBlk* blk = static_cast<CacheBlk*>(location);
         if ((blk->tag == tag) && blk->isValid() &&

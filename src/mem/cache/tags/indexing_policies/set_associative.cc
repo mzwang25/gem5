@@ -69,7 +69,7 @@ SetAssociative::regenerateAddr(const Addr tag, const ReplaceableEntry* entry)
 std::vector<ReplaceableEntry*>
 SetAssociative::getPossibleEntries(const Addr addr) const
 {
-    if(addr == 7733384) std::cout << extractSet(addr) << std::endl;
+    if(addr == 3484672) std::cout << extractSet(addr) << std::endl;
     return sets[extractSet(addr)];
 }
 

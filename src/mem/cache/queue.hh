@@ -250,7 +250,7 @@ class Queue : public Drainable
 
         if(allocated == 0) {
             //I need to somehow send something back to cache
-            dynamic_cache_global->notifyFlush();
+            //dynamic_cache_global->notifyFlush(); HOLD FOR NOW
         }
 
         if (drainState() == DrainState::Draining && allocated == 0) {
