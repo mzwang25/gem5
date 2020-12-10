@@ -248,6 +248,7 @@ class BaseSetAssoc : public BaseTags
         }
         return false;
     }
+
 };
 
 #endif //__MEM_CACHE_TAGS_BASE_SET_ASSOC_HH__

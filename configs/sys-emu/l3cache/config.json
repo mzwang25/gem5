@@ -512,12 +512,13 @@
                     "mshrs": 10, 
                     "writeback_clean": false, 
                     "tags": {
+                        "system": "system", 
                         "tag_latency": 2, 
                         "replacement_policy": "system.cpu.dtb_walker_cache.replacement_policy", 
                         "name": "tags", 
                         "eventq_index": 0, 
                         "warmup_percentage": 0, 
-                        "clk_domain": "system.cpu_clk_domain", 
+                        "addWayAt": [], 
                         "indexing_policy": {
                             "name": "indexing_policy", 
                             "eventq_index": 0, 
@@ -528,7 +529,7 @@
                             "type": "SetAssociative", 
                             "size": 1024
                         }, 
-                        "system": "system", 
+                        "clk_domain": "system.cpu_clk_domain", 
                         "sequential_access": false, 
                         "assoc": 2, 
                         "power_model": [], 
@@ -619,12 +620,13 @@
                     "mshrs": 10, 
                     "writeback_clean": false, 
                     "tags": {
+                        "system": "system", 
                         "tag_latency": 2, 
                         "replacement_policy": "system.cpu.itb_walker_cache.replacement_policy", 
                         "name": "tags", 
                         "eventq_index": 0, 
                         "warmup_percentage": 0, 
-                        "clk_domain": "system.cpu_clk_domain", 
+                        "addWayAt": [], 
                         "indexing_policy": {
                             "name": "indexing_policy", 
                             "eventq_index": 0, 
@@ -635,7 +637,7 @@
                             "type": "SetAssociative", 
                             "size": 1024
                         }, 
-                        "system": "system", 
+                        "clk_domain": "system.cpu_clk_domain", 
                         "sequential_access": false, 
                         "assoc": 2, 
                         "power_model": [], 
@@ -753,12 +755,13 @@
                     "mshrs": 4, 
                     "writeback_clean": true, 
                     "tags": {
+                        "system": "system", 
                         "tag_latency": 2, 
                         "replacement_policy": "system.cpu.icache.replacement_policy", 
                         "name": "tags", 
                         "eventq_index": 0, 
                         "warmup_percentage": 0, 
-                        "clk_domain": "system.cpu_clk_domain", 
+                        "addWayAt": [], 
                         "indexing_policy": {
                             "name": "indexing_policy", 
                             "eventq_index": 0, 
@@ -769,7 +772,7 @@
                             "type": "SetAssociative", 
                             "size": 32768
                         }, 
-                        "system": "system", 
+                        "clk_domain": "system.cpu_clk_domain", 
                         "sequential_access": false, 
                         "assoc": 2, 
                         "power_model": [], 
@@ -987,12 +990,13 @@
                     "mshrs": 4, 
                     "writeback_clean": false, 
                     "tags": {
+                        "system": "system", 
                         "tag_latency": 2, 
                         "replacement_policy": "system.cpu.dcache.replacement_policy", 
                         "name": "tags", 
                         "eventq_index": 0, 
                         "warmup_percentage": 0, 
-                        "clk_domain": "system.cpu_clk_domain", 
+                        "addWayAt": [], 
                         "indexing_policy": {
                             "name": "indexing_policy", 
                             "eventq_index": 0, 
@@ -1003,7 +1007,7 @@
                             "type": "SetAssociative", 
                             "size": 65536
                         }, 
-                        "system": "system", 
+                        "clk_domain": "system.cpu_clk_domain", 
                         "sequential_access": false, 
                         "assoc": 2, 
                         "power_model": [], 
@@ -1109,12 +1113,13 @@
             "mshrs": 20, 
             "writeback_clean": false, 
             "tags": {
+                "system": "system", 
                 "tag_latency": 20, 
                 "replacement_policy": "system.l2.replacement_policy", 
                 "name": "tags", 
                 "eventq_index": 0, 
                 "warmup_percentage": 0, 
-                "clk_domain": "system.cpu_clk_domain", 
+                "addWayAt": [], 
                 "indexing_policy": {
                     "name": "indexing_policy", 
                     "eventq_index": 0, 
@@ -1125,7 +1130,7 @@
                     "type": "SetAssociative", 
                     "size": 1024
                 }, 
-                "system": "system", 
+                "clk_domain": "system.cpu_clk_domain", 
                 "sequential_access": false, 
                 "assoc": 8, 
                 "power_model": [], 
@@ -1212,12 +1217,13 @@
             "mshrs": 32, 
             "writeback_clean": false, 
             "tags": {
+                "system": "system", 
                 "tag_latency": 32, 
                 "replacement_policy": "system.l3.replacement_policy", 
                 "name": "tags", 
                 "eventq_index": 0, 
                 "warmup_percentage": 0, 
-                "clk_domain": "system.cpu_clk_domain", 
+                "addWayAt": [], 
                 "indexing_policy": {
                     "name": "indexing_policy", 
                     "eventq_index": 0, 
@@ -1228,7 +1234,7 @@
                     "type": "SetAssociative", 
                     "size": 16777216
                 }, 
-                "system": "system", 
+                "clk_domain": "system.cpu_clk_domain", 
                 "sequential_access": false, 
                 "assoc": 16, 
                 "power_model": [], 

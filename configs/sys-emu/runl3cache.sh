@@ -3,7 +3,13 @@
 SPECROOTDIR=~/michael/spec2017
 GEM5OPT=~/michael/gem5/build/X86/gem5.opt
 SPEC17CFG=~/michael/gem5/configs/sys-emu/config-files/spec17_config.py
-SIMOPTIONS='--fast-forward=10000000 --maxinsts=300000000 --cpu-type=TimingSimpleCPU --caches --l2cache --l2_size=1024 --l3cache'
+SIMOPTIONS='--fast-forward=10000000 
+            --maxinsts=300000000 
+            --cpu-type=TimingSimpleCPU 
+            --caches 
+            --l2cache 
+            --l2_size=1024 
+            --l3cache'
  
 ######################################################################
 

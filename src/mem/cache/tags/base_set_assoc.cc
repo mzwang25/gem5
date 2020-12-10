@@ -75,8 +75,6 @@ BaseSetAssoc::BaseSetAssoc(const Params *p)
         }
 
     }
-
-    schedule(hello, 12213556000);
 }
 
 void
