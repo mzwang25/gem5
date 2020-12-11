@@ -158,6 +158,7 @@ class BaseIndexingPolicy : public SimObject
 
     // Change #of ways dynamically
     void increaseAssociativity();
+    void decreaseAssociativity();
 
 };
 

@@ -265,8 +265,14 @@ class BaseTags : public ClockedObject
     /**
      * Double the size of the cache by increasing ways.
      */
+
+     void* ownerCache; //pointer to a BaseCache object
+     void setOwnerCache(void* cache);
      
      virtual void doubleSize()
+     {}
+
+     virtual void halfSize()
      {}
 
     /**

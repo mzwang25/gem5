@@ -61,7 +61,7 @@ BaseTags::BaseTags(const Params *p)
       system(p->system), indexingPolicy(p->indexing_policy),
       warmupBound((p->warmup_percentage/100.0) * (p->size / p->block_size)),
       warmedUp(false), numBlocks(p->size / p->block_size), didSizeIncrease(false),
-      dataBlks(new uint8_t[2 * p->size]), // Allocate data storage in one big chunk
+      dataBlks(new uint8_t[8 * p->size]), // Allocate data storage in one big chunk
       stats(*this)
 {
     registerExitCallback(new BaseTagsCallback(this));
@@ -71,6 +71,12 @@ ReplaceableEntry*
 BaseTags::findBlockBySetAndWay(int set, int way) const
 {
     return indexingPolicy->getEntry(set, way);
+}
+
+void
+BaseTags::setOwnerCache(void* cache)
+{
+  ownerCache = cache;
 }
 
 CacheBlk*
@@ -87,6 +93,7 @@ BaseTags::findBlock(Addr addr, bool is_secure) const
 
     // Search for block
     for (const auto& location : entries) {
+        if(location == nullptr) std::cout << addr << " " << tag << std::endl;
         assert(location != nullptr);
         CacheBlk* blk = static_cast<CacheBlk*>(location);
         if ((blk->tag == tag) && blk->isValid() &&
@@ -279,3 +286,4 @@ BaseTags::BaseTagStats::preDumpStats()
 
     tags.computeStats();
 }
+

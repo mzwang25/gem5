@@ -54,7 +54,7 @@ using namespace std;
 
 
 BaseSetAssoc::BaseSetAssoc(const Params *p)
-    :BaseTags(p), allocAssoc(p->assoc), blks(2 * p->size / p->block_size),
+    :BaseTags(p), allocAssoc(p->assoc), blks(8 * p->size / p->block_size),
      sequentialAccess(p->sequential_access),
      replacementPolicy(p->replacement_policy),
      hello([this]{doubleSize();}, name())
@@ -64,6 +64,8 @@ BaseSetAssoc::BaseSetAssoc(const Params *p)
         fatal("Block size must be at least 4 and a power of 2");
     }
 
+    current_assoc = 1;
+
     if(p->addWayAt.size() != 0)
     {
         for(auto i = p->addWayAt.begin(); i != p->addWayAt.end(); i++)
@@ -71,6 +73,17 @@ BaseSetAssoc::BaseSetAssoc(const Params *p)
             std::cout << "Increase assoc @ Tick " << *i << std::endl;
             auto event = new EventFunctionWrapper([this]{doubleSize();}, name());
             assocIncreaseEvents.push_back(event);
+            schedule(event, *i);
+        }
+
+    }
+
+    if(p->remWayAt.size() != 0)
+    {
+        for(auto i = p->remWayAt.begin(); i != p->remWayAt.end(); i++)
+        {
+            std::cout << "Decrease assoc @ Tick " << *i << std::endl;
+            auto event = new EventFunctionWrapper([this]{halfSize();}, name());
             schedule(event, *i);
         }
 
@@ -111,36 +124,52 @@ BaseSetAssoc::invalidate(CacheBlk *blk)
 }
 
 void
+BaseSetAssoc::halfSize()
+{
+    //starting index of the blocks we are going to remove
+    unsigned start_index = numBlocks / 2;
+
+    for(unsigned blk_index = start_index; blk_index < numBlocks; blk_index++)
+    {
+      ((BaseCache*) ownerCache)->writebackVisitor(blks[blk_index]);
+      ((BaseCache*) ownerCache)->invalidateVisitor(blks[blk_index]);
+    }
+
+    indexingPolicy->decreaseAssociativity();
+
+    current_assoc /= 2;
+    numBlocks /= 2;
+
+    std::cout << "Set Associativity to " << current_assoc << std::endl;
+
+}
+
+void
 BaseSetAssoc::doubleSize()
 {
-    cout << "Hello I am going to double your Cache size!" << endl;    
-
     indexingPolicy->increaseAssociativity();
 
-    for (unsigned blk_index = 0; blk_index < numBlocks; blk_index++) {
-        
+    for (unsigned blk_index = 0; blk_index < numBlocks; blk_index++) 
+    {
         CacheBlk* blk = &blks[blk_index];
-        indexingPolicy->setEntry(blk, 2*blk_index);
+        //indexingPolicy->setEntry(blk, 2*blk_index);
         assert(blk->isValid() || !blk->isValid());
-        //std::cout << (blk->tag) << std::endl;
-
-        
     }
-    CacheBlk* blk3 = &blks[0];
-    CacheBlk* blk4 = static_cast<CacheBlk*>(indexingPolicy->getEntry(0, 0));
-    assert(blk3 == blk4);
 
     unsigned start_index = numBlocks;
 
+    int a = current_assoc + 1;
 
+    current_assoc *= 2;
     numBlocks *= 2;
-    //size *= 2;
 
-    blk3 = &blks[0];
-    blk4 = static_cast<CacheBlk*>(indexingPolicy->getEntry(0, 0));
-    assert(blk3 == blk4);
+    //                 1,3,5,7,9,11
+    // 0123            2,3,6,7,10,11
+    // 4567
+    // 89(10)(11)
 
-    // Initialize all blocks
+    int state = 1 ? current_assoc > 2 : 0;
+    int idx = current_assoc / 2;
 
     for (unsigned blk_index = start_index; blk_index < numBlocks; blk_index++) {
         // locate next cache block
@@ -150,7 +179,10 @@ BaseSetAssoc::doubleSize()
         assert(blk->tag);
 
         // link block to indexing policy
-        indexingPolicy->setEntry(blk, 2*(blk_index - start_index) + 1);
+        indexingPolicy->setEntry(blk, idx);
+        if(state == 0) idx += a;
+        else idx += 1;
+        state = (state + 1) % (a - 1);
 
         // associate a data chunk to the block
         blk->data = &dataBlks[blkSize*blk_index];
@@ -159,17 +191,8 @@ BaseSetAssoc::doubleSize()
         blk->replacementData = replacementPolicy->instantiateEntry();
     }
 
-    if(blks.size() > 2400)
-    {
-        CacheBlk* blk = &blks[start_index];
-        CacheBlk* blk2 = static_cast<CacheBlk*>(indexingPolicy->getEntry(0, 1));
-        CacheBlk* blk3 = &blks[0];
-        CacheBlk* blk4 = static_cast<CacheBlk*>(indexingPolicy->getEntry(0, 0));
+    std::cout << "Set Associativity to " << current_assoc << std::endl;
 
-        assert(blk == blk2);
-        assert(blk3 == blk4);
-
-    }
 }
 
 BaseSetAssoc *
