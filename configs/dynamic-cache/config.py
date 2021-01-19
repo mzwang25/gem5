@@ -61,7 +61,7 @@ class L1Cache(Cache):
 
 class L2Cache(Cache):
     assoc = 1
-    size = '64kB'
+    size = '128kB'
     tag_latency = 20
     data_latency = 20
     response_latency = 20
@@ -80,9 +80,8 @@ class L3Cache(Cache):
     tag_latency = 51
     data_latency = 51
     response_latency = 51
-    mshrs = 4
+    mshrs = 20
     tgts_per_mshr = 20
-    clusivity = Param.Clusivity("mostly_excl")
 
 
     def __init__(self, options=None):
@@ -91,16 +90,17 @@ class L3Cache(Cache):
 
 class L4Cache(Cache):
     assoc = 1
-    size = "256kB"
+    size = "512kB"
     tag_latency = 130
     data_latency = 130
     response_latency = 130
-    mshrs = 4
+    mshrs = 20
     tgts_per_mshr = 20
     clusivity = Param.Clusivity("mostly_excl")
 
     #will double size and assoc at ticks in list
-    tags = BaseSetAssoc(addWayAt=[12518177000]) 
+    tags = BaseSetAssoc(addWayAt=[15000000000, 19000000000],
+                        remWayAt=[17000000000])
 
     def __init__(self, options=None):
         super(L4Cache, self).__init__()
@@ -113,7 +113,7 @@ system.clk_domain = SrcClockDomain()
 system.clk_domain.clock = '1GHz'
 system.clk_domain.voltage_domain = VoltageDomain()
 system.mem_mode = 'timing'
-system.mem_ranges = [AddrRange('512MB')]
+system.mem_ranges = [AddrRange('216MB')]
 
 system.cpu = TimingSimpleCPU()
 system.dcache = L1Cache()
@@ -151,6 +151,7 @@ system.mem_delay = SimpleMemDelay(
 system.mem_delay.slave = system.membus.master
 
 system.mem_ctrl = DDR3_1600_8x8()
+#system.mem_ctrl = DDR4_2400_16x4()
 system.mem_ctrl.range = system.mem_ranges[0]
 system.mem_ctrl.port = system.mem_delay.master
 #=================================================================
@@ -170,5 +171,17 @@ root = Root(full_system = False, system = system)
 m5.instantiate()
 
 print ("Beginning simulation!")
-exit_event = m5.simulate()
-print('Exiting @ tick %i because %s' % (m5.curTick(), exit_event.getCause()))
+maxinstexit = "a thread reached the max instruction count"
+
+exit_event = m5.simulate(16 * 10000000000)
+m5.stats.dump()
+m5.stats.reset()
+
+while(exit_event.getCause() != maxinstexit):
+    exit_event = m5.simulate(10000000000)
+    m5.stats.dump()
+    m5.stats.reset()
+
+print ("Ending simulation at {}".format(m5.curTick()))
+
+

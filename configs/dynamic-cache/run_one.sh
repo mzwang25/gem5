@@ -37,5 +37,6 @@ echo
 }
 
 # Run gem5
+#${GEM5OPT} --debug-flag=MMU --outdir=${OUTDIR}/${ACTUALBENCHNAME} --debug-flags=DynamicCacheCtrl ${CFG} -b ${ACTUALBENCHNAME} -i ${MAXINST} 
 ${GEM5OPT} --outdir=${OUTDIR}/${ACTUALBENCHNAME} --debug-flags=DynamicCacheCtrl ${CFG} -b ${ACTUALBENCHNAME} -i ${MAXINST} 
 

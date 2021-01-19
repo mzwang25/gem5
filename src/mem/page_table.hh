@@ -47,6 +47,7 @@ class ThreadContext;
 
 class EmulationPageTable : public Serializable
 {
+
   public:
     struct Entry
     {
@@ -158,6 +159,7 @@ class EmulationPageTable : public Serializable
 
     void serialize(CheckpointOut &cp) const override;
     void unserialize(CheckpointIn &cp) override;
+
 };
 
 #endif // __MEM_PAGE_TABLE_HH__

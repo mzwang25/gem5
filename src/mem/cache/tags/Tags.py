@@ -79,10 +79,13 @@ class BaseSetAssoc(BaseTags):
     assoc = Param.Int(Parent.assoc, "associativity")
 
     addWayAt = VectorParam.UInt64([], "Instruction to add a way at")
+    remWayAt = VectorParam.UInt64([], "Instruction to dec a way at")
+
 
     # Get replacement policy from the parent (cache)
     replacement_policy = Param.BaseReplacementPolicy(
         Parent.replacement_policy, "Replacement policy")
+
 
 class SectorTags(BaseTags):
     type = 'SectorTags'

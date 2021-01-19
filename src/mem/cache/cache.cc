@@ -67,6 +67,7 @@ Cache::Cache(const CacheParams *p)
     : BaseCache(p, p->system->cacheLineSize()),
       doFastWrites(true)
 {
+  tags->setOwnerCache(this);
 }
 
 void

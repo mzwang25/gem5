@@ -131,8 +131,17 @@ EmulationPageTable::lookup(Addr vaddr)
 {
     Addr page_addr = pageAlign(vaddr);
     PTableItr iter = pTable.find(page_addr);
+
+    DPRINTF(MMU, "Looking Up Page: %#x-%#x\n", page_addr);
+    //std::cout << pTable.size() << std::endl;
+    //std::cout << page_addr << std::endl;
+
+
     if (iter == pTable.end())
+    {
         return nullptr;
+    } 
+    
     return &(iter->second);
 }
 

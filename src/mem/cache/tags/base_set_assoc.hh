@@ -84,6 +84,7 @@ class BaseSetAssoc : public BaseTags
     /** Replacement policy */
     BaseReplacementPolicy *replacementPolicy;
 
+    int current_assoc;
   public:
     /** Convenience typedef. */
      typedef BaseSetAssocParams Params;
@@ -111,7 +112,9 @@ class BaseSetAssoc : public BaseTags
      */
     void invalidate(CacheBlk *blk) override;
 
+
     void doubleSize() override;
+    void halfSize() override;
 
     std::vector<EventFunctionWrapper*> assocIncreaseEvents;
     EventFunctionWrapper hello;
@@ -248,6 +251,7 @@ class BaseSetAssoc : public BaseTags
         }
         return false;
     }
+
 };
 
 #endif //__MEM_CACHE_TAGS_BASE_SET_ASSOC_HH__
